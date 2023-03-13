@@ -26,6 +26,4 @@ public class Salary {
 
     @Column(name = "value_salary")
     private Double valueSalary;
-
-
 }
