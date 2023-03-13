@@ -21,8 +21,8 @@ public class Coach {
     private Long age;
     private String address;
 
-    private String img;
+    private String imagePath;
     @Transient
-    private MultipartFile multipartFile;
+    private MultipartFile image;
     private boolean status = true;
 }
