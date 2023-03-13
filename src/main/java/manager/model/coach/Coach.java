@@ -20,6 +20,8 @@ public class Coach {
     private String name;
     private Long age;
     private String address;
+    @ManyToOne
+    private WorkPosition position;
 
     private String imagePath;
     @Transient
