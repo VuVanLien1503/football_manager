@@ -1,0 +1,2 @@
+INSERT INTO `football_manager`.`salary_type` (`name`) VALUES ('hard salary');
+INSERT INTO `football_manager`.`salary_type` (`name`) VALUES ('salary bonus');
