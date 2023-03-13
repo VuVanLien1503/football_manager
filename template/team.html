@@ -42,12 +42,13 @@
 
 
   <script type="text/javascript" src="js/modernizr.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="ajax/team.js"></script>
 
 
 </head>
 
-<body>
+<body onload="displayPlayer()">
 
 <!-- Load page -->
 <div class="animationload">
@@ -148,243 +149,241 @@
             <div role="tabpanel" class="tab-pane fade in active" id="primary" aria-labelledBy="primary-tab">
               <div class="teams">
                 <div class="nav-team" id="primary-nav">
-                  <div class="position active">
-                    <a title=""><span class="gk">GK</span> 1. Guiliugi Button</a>
-                  </div>
-                  <div class="position">
-                    <a title=""><span class="cb">CB</span> 3. Paulo Maldoko</a>
-                  </div>
-                  <div class="position">
-                    <a title=""><span class="cb">CB</span> 4. Alexandro Nista</a>
-                  </div>
-                  <div class="position">
-                    <a title=""><span class="cb">CB</span> 5. Fabio Carnivora</a>
-                  </div>
-                  <div class="position">
-                    <a title=""><span class="rmf">RMF</span> 7. David Beckman</a>
-                  </div>
-                  <div class="position">
-                    <a title=""><span class="rmf">LMF</span> 21. Ryan Goggle</a>
-                  </div>
-                  <div class="position">
-                    <a title=""><span class="rmf">DMF</span> 14. Andrea Polo</a>
-                  </div>
-                  <div class="position">
-                    <a title=""><span class="rmf">AMF</span> 10. Fransisco Totto</a>
-                  </div>
-                  <div class="position">
-                    <a title=""><span class="rmf">AMF</span> 11. Christian Ronaldoel</a>
-                  </div>
-                  <div class="position">
-                    <a title=""><span class="cf">CF</span> 9. Didier Dropbox</a>
-                  </div>
-                  <div class="position">
-                    <a title=""><span class="cf">CF</span> 99. Ibrahimovie</a>
-                  </div>
-                  <!--  -->
+<!--                  <div class="position active">-->
+<!--                    <a title=""><span class="gk">GK</span> 1. Guiliugi Button</a>-->
+<!--                  </div>-->
+<!--                  <div class="position">-->
+<!--                    <a title=""><span class="cb">CB</span> 3. Paulo Maldoko</a>-->
+<!--                  </div>-->
+<!--                  <div class="position">-->
+<!--                    <a title=""><span class="cb">CB</span> 4. Alexandro Nista</a>-->
+<!--                  </div>-->
+<!--                  <div class="position">-->
+<!--                    <a title=""><span class="cb">CB</span> 5. Fabio Carnivora</a>-->
+<!--                  </div>-->
+<!--                  <div class="position">-->
+<!--                    <a title=""><span class="rmf">RMF</span> 7. David Beckman</a>-->
+<!--                  </div>-->
+<!--                  <div class="position">-->
+<!--                    <a title=""><span class="rmf">LMF</span> 21. Ryan Goggle</a>-->
+<!--                  </div>-->
+<!--                  <div class="position">-->
+<!--                    <a title=""><span class="rmf">DMF</span> 14. Andrea Polo</a>-->
+<!--                  </div>-->
+<!--                  <div class="position">-->
+<!--                    <a title=""><span class="rmf">AMF</span> 10. Fransisco Totto</a>-->
+<!--                  </div>-->
+<!--                  <div class="position">-->
+<!--                    <a title=""><span class="rmf">AMF</span> 11. Christian Ronaldoel</a>-->
+<!--                  </div>-->
+<!--                  <div class="position">-->
+<!--                    <a title=""><span class="cf">CF</span> 9. Didier Dropbox</a>-->
+<!--                  </div>-->
+<!--                  <div class="position">-->
+<!--                    <a title=""><span class="cf">CF</span> 99. Ibrahimovie</a>-->
+<!--                  </div>-->
                 </div>
               </div>
               <div class="teams-caro">
                 <div id="primary-team-caro" class="owl-carousel owl-theme">
-                  <div class="item">
-                    <div class="teams-image">
-                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />
-                    </div>
-                    <div class="teams-description">
-                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>
-                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>
-                      <p><span class="title">HEIGHT : </span>183 cm</p>
-                      <p><span class="title">WEIGHT : </span>80 kg</p>
-                      <p><span class="title">POSITION : </span>FORWARDER</p>
-                      <p><span class="title">PLAYED : </span>180</p>
-                      <p><span class="title">GOAL : </span>25</p>
-                      <p><span class="title">RED CARDS : </span>3</p>
-                      <p><span class="title">YELLOW CARDS : </span>10</p>
-                      <p><span class="title">INFORMATION </span></p>
-                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="teams-image">
-                      <img src="images/player/Aaron-Ramsdale.jpg" alt="" class="img-responsive" />
-                    </div>
-                    <div class="teams-description">
-                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>
-                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>
-                      <p><span class="title">HEIGHT : </span>183 cm</p>
-                      <p><span class="title">WEIGHT : </span>80 kg</p>
-                      <p><span class="title">POSITION : </span>FORWARDER</p>
-                      <p><span class="title">PLAYED : </span>180</p>
-                      <p><span class="title">GOAL : </span>25</p>
-                      <p><span class="title">RED CARDS : </span>3</p>
-                      <p><span class="title">YELLOW CARDS : </span>10</p>
-                      <p><span class="title">INFORMATION </span></p>
-                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="teams-image">
-                      <img src="images/player-3.jpg" alt="" class="img-responsive" />
-                    </div>
-                    <div class="teams-description">
-                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>
-                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>
-                      <p><span class="title">HEIGHT : </span>183 cm</p>
-                      <p><span class="title">WEIGHT : </span>80 kg</p>
-                      <p><span class="title">POSITION : </span>FORWARDER</p>
-                      <p><span class="title">PLAYED : </span>180</p>
-                      <p><span class="title">GOAL : </span>25</p>
-                      <p><span class="title">RED CARDS : </span>3</p>
-                      <p><span class="title">YELLOW CARDS : </span>10</p>
-                      <p><span class="title">INFORMATION </span></p>
-                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="teams-image">
-                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />
-                    </div>
-                    <div class="teams-description">
-                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>
-                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>
-                      <p><span class="title">HEIGHT : </span>183 cm</p>
-                      <p><span class="title">WEIGHT : </span>80 kg</p>
-                      <p><span class="title">POSITION : </span>FORWARDER</p>
-                      <p><span class="title">PLAYED : </span>180</p>
-                      <p><span class="title">GOAL : </span>25</p>
-                      <p><span class="title">RED CARDS : </span>3</p>
-                      <p><span class="title">YELLOW CARDS : </span>10</p>
-                      <p><span class="title">INFORMATION </span></p>
-                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="teams-image">
-                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />
-                    </div>
-                    <div class="teams-description">
-                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>
-                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>
-                      <p><span class="title">HEIGHT : </span>183 cm</p>
-                      <p><span class="title">WEIGHT : </span>80 kg</p>
-                      <p><span class="title">POSITION : </span>FORWARDER</p>
-                      <p><span class="title">PLAYED : </span>180</p>
-                      <p><span class="title">GOAL : </span>25</p>
-                      <p><span class="title">RED CARDS : </span>3</p>
-                      <p><span class="title">YELLOW CARDS : </span>10</p>
-                      <p><span class="title">INFORMATION </span></p>
-                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="teams-image">
-                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />
-                    </div>
-                    <div class="teams-description">
-                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>
-                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>
-                      <p><span class="title">HEIGHT : </span>183 cm</p>
-                      <p><span class="title">WEIGHT : </span>80 kg</p>
-                      <p><span class="title">POSITION : </span>FORWARDER</p>
-                      <p><span class="title">PLAYED : </span>180</p>
-                      <p><span class="title">GOAL : </span>25</p>
-                      <p><span class="title">RED CARDS : </span>3</p>
-                      <p><span class="title">YELLOW CARDS : </span>10</p>
-                      <p><span class="title">INFORMATION </span></p>
-                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="teams-image">
-                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />
-                    </div>
-                    <div class="teams-description">
-                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>
-                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>
-                      <p><span class="title">HEIGHT : </span>183 cm</p>
-                      <p><span class="title">WEIGHT : </span>80 kg</p>
-                      <p><span class="title">POSITION : </span>FORWARDER</p>
-                      <p><span class="title">PLAYED : </span>180</p>
-                      <p><span class="title">GOAL : </span>25</p>
-                      <p><span class="title">RED CARDS : </span>3</p>
-                      <p><span class="title">YELLOW CARDS : </span>10</p>
-                      <p><span class="title">INFORMATION </span></p>
-                      <p>Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="teams-image">
-                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />
-                    </div>
-                    <div class="teams-description">
-                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>
-                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>
-                      <p><span class="title">HEIGHT : </span>183 cm</p>
-                      <p><span class="title">WEIGHT : </span>80 kg</p>
-                      <p><span class="title">POSITION : </span>FORWARDER</p>
-                      <p><span class="title">PLAYED : </span>180</p>
-                      <p><span class="title">GOAL : </span>25</p>
-                      <p><span class="title">RED CARDS : </span>3</p>
-                      <p><span class="title">YELLOW CARDS : </span>10</p>
-                      <p><span class="title">INFORMATION </span></p>
-                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="teams-image">
-                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />
-                    </div>
-                    <div class="teams-description">
-                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>
-                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>
-                      <p><span class="title">HEIGHT : </span>183 cm</p>
-                      <p><span class="title">WEIGHT : </span>80 kg</p>
-                      <p><span class="title">POSITION : </span>FORWARDER</p>
-                      <p><span class="title">PLAYED : </span>180</p>
-                      <p><span class="title">GOAL : </span>25</p>
-                      <p><span class="title">RED CARDS : </span>3</p>
-                      <p><span class="title">YELLOW CARDS : </span>10</p>
-                      <p><span class="title">INFORMATION </span></p>
-                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="teams-image">
-                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />
-                    </div>
-                    <div class="teams-description">
-                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>
-                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>
-                      <p><span class="title">HEIGHT : </span>183 cm</p>
-                      <p><span class="title">WEIGHT : </span>80 kg</p>
-                      <p><span class="title">POSITION : </span>FORWARDER</p>
-                      <p><span class="title">PLAYED : </span>180</p>
-                      <p><span class="title">GOAL : </span>25</p>
-                      <p><span class="title">RED CARDS : </span>3</p>
-                      <p><span class="title">YELLOW CARDS : </span>10</p>
-                      <p><span class="title">INFORMATION </span></p>
-                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="teams-image">
-                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />
-                    </div>
-                    <div class="teams-description">
-                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>
-                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>
-                      <p><span class="title">HEIGHT : </span>183 cm</p>
-                      <p><span class="title">WEIGHT : </span>80 kg</p>
-                      <p><span class="title">POSITION : </span>FORWARDER</p>
-                      <p><span class="title">PLAYED : </span>180</p>
-                      <p><span class="title">GOAL : </span>25</p>
-                      <p><span class="title">RED CARDS : </span>3</p>
-                      <p><span class="title">YELLOW CARDS : </span>10</p>
-                      <p><span class="title">INFORMATION </span></p>
-                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>
-                    </div>
-                  </div>
-
+<!--                  <div class="item">-->
+<!--                    <div class="teams-image">-->
+<!--                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />-->
+<!--                    </div>-->
+<!--                    <div class="teams-description" id="one_player">-->
+<!--                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>-->
+<!--                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>-->
+<!--                      <p><span class="title">HEIGHT : </span>183 cm</p>-->
+<!--                      <p><span class="title">WEIGHT : </span>80 kg</p>-->
+<!--                      <p><span class="title">POSITION : </span>FORWARDER</p>-->
+<!--                      <p><span class="title">PLAYED : </span>180</p>-->
+<!--                      <p><span class="title">GOAL : </span>25</p>-->
+<!--                      <p><span class="title">RED CARDS : </span>3</p>-->
+<!--                      <p><span class="title">YELLOW CARDS : </span>10</p>-->
+<!--                      <p><span class="title">INFORMATION </span></p>-->
+<!--                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="teams-image">-->
+<!--                      <img src="images/player/Aaron-Ramsdale.jpg" alt="" class="img-responsive" />-->
+<!--                    </div>-->
+<!--                    <div class="teams-description">-->
+<!--                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>-->
+<!--                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>-->
+<!--                      <p><span class="title">HEIGHT : </span>183 cm</p>-->
+<!--                      <p><span class="title">WEIGHT : </span>80 kg</p>-->
+<!--                      <p><span class="title">POSITION : </span>FORWARDER</p>-->
+<!--                      <p><span class="title">PLAYED : </span>180</p>-->
+<!--                      <p><span class="title">GOAL : </span>25</p>-->
+<!--                      <p><span class="title">RED CARDS : </span>3</p>-->
+<!--                      <p><span class="title">YELLOW CARDS : </span>10</p>-->
+<!--                      <p><span class="title">INFORMATION </span></p>-->
+<!--                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="teams-image">-->
+<!--                      <img src="images/player-3.jpg" alt="" class="img-responsive" />-->
+<!--                    </div>-->
+<!--                    <div class="teams-description">-->
+<!--                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>-->
+<!--                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>-->
+<!--                      <p><span class="title">HEIGHT : </span>183 cm</p>-->
+<!--                      <p><span class="title">WEIGHT : </span>80 kg</p>-->
+<!--                      <p><span class="title">POSITION : </span>FORWARDER</p>-->
+<!--                      <p><span class="title">PLAYED : </span>180</p>-->
+<!--                      <p><span class="title">GOAL : </span>25</p>-->
+<!--                      <p><span class="title">RED CARDS : </span>3</p>-->
+<!--                      <p><span class="title">YELLOW CARDS : </span>10</p>-->
+<!--                      <p><span class="title">INFORMATION </span></p>-->
+<!--                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="teams-image">-->
+<!--                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />-->
+<!--                    </div>-->
+<!--                    <div class="teams-description">-->
+<!--                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>-->
+<!--                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>-->
+<!--                      <p><span class="title">HEIGHT : </span>183 cm</p>-->
+<!--                      <p><span class="title">WEIGHT : </span>80 kg</p>-->
+<!--                      <p><span class="title">POSITION : </span>FORWARDER</p>-->
+<!--                      <p><span class="title">PLAYED : </span>180</p>-->
+<!--                      <p><span class="title">GOAL : </span>25</p>-->
+<!--                      <p><span class="title">RED CARDS : </span>3</p>-->
+<!--                      <p><span class="title">YELLOW CARDS : </span>10</p>-->
+<!--                      <p><span class="title">INFORMATION </span></p>-->
+<!--                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="teams-image">-->
+<!--                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />-->
+<!--                    </div>-->
+<!--                    <div class="teams-description">-->
+<!--                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>-->
+<!--                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>-->
+<!--                      <p><span class="title">HEIGHT : </span>183 cm</p>-->
+<!--                      <p><span class="title">WEIGHT : </span>80 kg</p>-->
+<!--                      <p><span class="title">POSITION : </span>FORWARDER</p>-->
+<!--                      <p><span class="title">PLAYED : </span>180</p>-->
+<!--                      <p><span class="title">GOAL : </span>25</p>-->
+<!--                      <p><span class="title">RED CARDS : </span>3</p>-->
+<!--                      <p><span class="title">YELLOW CARDS : </span>10</p>-->
+<!--                      <p><span class="title">INFORMATION </span></p>-->
+<!--                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="teams-image">-->
+<!--                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />-->
+<!--                    </div>-->
+<!--                    <div class="teams-description">-->
+<!--                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>-->
+<!--                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>-->
+<!--                      <p><span class="title">HEIGHT : </span>183 cm</p>-->
+<!--                      <p><span class="title">WEIGHT : </span>80 kg</p>-->
+<!--                      <p><span class="title">POSITION : </span>FORWARDER</p>-->
+<!--                      <p><span class="title">PLAYED : </span>180</p>-->
+<!--                      <p><span class="title">GOAL : </span>25</p>-->
+<!--                      <p><span class="title">RED CARDS : </span>3</p>-->
+<!--                      <p><span class="title">YELLOW CARDS : </span>10</p>-->
+<!--                      <p><span class="title">INFORMATION </span></p>-->
+<!--                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="teams-image">-->
+<!--                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />-->
+<!--                    </div>-->
+<!--                    <div class="teams-description">-->
+<!--                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>-->
+<!--                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>-->
+<!--                      <p><span class="title">HEIGHT : </span>183 cm</p>-->
+<!--                      <p><span class="title">WEIGHT : </span>80 kg</p>-->
+<!--                      <p><span class="title">POSITION : </span>FORWARDER</p>-->
+<!--                      <p><span class="title">PLAYED : </span>180</p>-->
+<!--                      <p><span class="title">GOAL : </span>25</p>-->
+<!--                      <p><span class="title">RED CARDS : </span>3</p>-->
+<!--                      <p><span class="title">YELLOW CARDS : </span>10</p>-->
+<!--                      <p><span class="title">INFORMATION </span></p>-->
+<!--                      <p>Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="teams-image">-->
+<!--                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />-->
+<!--                    </div>-->
+<!--                    <div class="teams-description">-->
+<!--                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>-->
+<!--                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>-->
+<!--                      <p><span class="title">HEIGHT : </span>183 cm</p>-->
+<!--                      <p><span class="title">WEIGHT : </span>80 kg</p>-->
+<!--                      <p><span class="title">POSITION : </span>FORWARDER</p>-->
+<!--                      <p><span class="title">PLAYED : </span>180</p>-->
+<!--                      <p><span class="title">GOAL : </span>25</p>-->
+<!--                      <p><span class="title">RED CARDS : </span>3</p>-->
+<!--                      <p><span class="title">YELLOW CARDS : </span>10</p>-->
+<!--                      <p><span class="title">INFORMATION </span></p>-->
+<!--                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="teams-image">-->
+<!--                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />-->
+<!--                    </div>-->
+<!--                    <div class="teams-description">-->
+<!--                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>-->
+<!--                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>-->
+<!--                      <p><span class="title">HEIGHT : </span>183 cm</p>-->
+<!--                      <p><span class="title">WEIGHT : </span>80 kg</p>-->
+<!--                      <p><span class="title">POSITION : </span>FORWARDER</p>-->
+<!--                      <p><span class="title">PLAYED : </span>180</p>-->
+<!--                      <p><span class="title">GOAL : </span>25</p>-->
+<!--                      <p><span class="title">RED CARDS : </span>3</p>-->
+<!--                      <p><span class="title">YELLOW CARDS : </span>10</p>-->
+<!--                      <p><span class="title">INFORMATION </span></p>-->
+<!--                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="teams-image">-->
+<!--                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />-->
+<!--                    </div>-->
+<!--                    <div class="teams-description">-->
+<!--                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>-->
+<!--                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>-->
+<!--                      <p><span class="title">HEIGHT : </span>183 cm</p>-->
+<!--                      <p><span class="title">WEIGHT : </span>80 kg</p>-->
+<!--                      <p><span class="title">POSITION : </span>FORWARDER</p>-->
+<!--                      <p><span class="title">PLAYED : </span>180</p>-->
+<!--                      <p><span class="title">GOAL : </span>25</p>-->
+<!--                      <p><span class="title">RED CARDS : </span>3</p>-->
+<!--                      <p><span class="title">YELLOW CARDS : </span>10</p>-->
+<!--                      <p><span class="title">INFORMATION </span></p>-->
+<!--                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="teams-image">-->
+<!--                      <img src="images/Gabriel%20Jesus.jpg" alt="" class="img-responsive" />-->
+<!--                    </div>-->
+<!--                    <div class="teams-description">-->
+<!--                      <p><span class="title">NATIONAL : </span>PORTUGAL</p>-->
+<!--                      <p><span class="title">DATE OF BIRTH : </span>10/02/1988</p>-->
+<!--                      <p><span class="title">HEIGHT : </span>183 cm</p>-->
+<!--                      <p><span class="title">WEIGHT : </span>80 kg</p>-->
+<!--                      <p><span class="title">POSITION : </span>FORWARDER</p>-->
+<!--                      <p><span class="title">PLAYED : </span>180</p>-->
+<!--                      <p><span class="title">GOAL : </span>25</p>-->
+<!--                      <p><span class="title">RED CARDS : </span>3</p>-->
+<!--                      <p><span class="title">YELLOW CARDS : </span>10</p>-->
+<!--                      <p><span class="title">INFORMATION </span></p>-->
+<!--                      <p class="font-normal">Lorem ipsum dolor sit amet, libero turpis non cras ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius eget sit mollis.</p>-->
+<!--                    </div>-->
+<!--                  </div>-->
                 </div>
               </div>
               <div class="clearfix"></div>
