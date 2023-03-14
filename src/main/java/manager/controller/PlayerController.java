@@ -19,11 +19,7 @@ import java.util.Optional;
 @RequestMapping("/api")
 @PropertySource("classpath:application.properties")
 public class PlayerController {
-//    @Value("${upload.path}")
-//    private String link;
-//
-//    @Value("${display.path}")
-//    private String displayLink;
+
     @Autowired
     private IPlayerRepository iPlayerRepository;
     @GetMapping("/players")
