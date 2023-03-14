@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @PropertySource("classpath:application.properties")
 @RestController
@@ -59,5 +60,21 @@ public class AccountController {
         }
         return null;
     }
+
+    @PostMapping("/register")
+    public void register(@RequestBody Account account){
+      accountService.save(account);
+    }
+    @GetMapping("/{id}")
+    public Account findOne(@PathVariable Long id){
+        return accountService.findAccountById(id);
+    }
+
+    @GetMapping("/listUser")
+    public List<Account> findAll(){
+        return accountService.findAll();
+    }
+
+
 
 }
