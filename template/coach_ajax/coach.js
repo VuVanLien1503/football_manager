@@ -51,7 +51,34 @@
                                   </div>`
                 }
                 document.getElementById("typicalCoach").innerHTML = context;
+            }
+        })
+    }
+
+    function displayAllCoach(){
+        $.ajax({
+            url : "http://localhost:8081/coaches",
+            type : "GET",
+            success(data){
 
             }
         })
+    }
+    function  displayTableCoach(data){
+
+    let context = `<div class="container">
+            <h2 style="text-align: center">List Coach</h2>
+            <table class="table table-striped-columns">
+                <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Address</th>
+                    <th></th>
+                    <th colspan="2" style="text-align: center">Action</th>
+                </tr>
+                </thead>
+                <tbody>`
     }

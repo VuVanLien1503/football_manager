@@ -1,4 +1,4 @@
-package manager.repository;
+package manager.repository.coach;
 
 import manager.model.coach.Coach;
 import org.springframework.data.domain.Page;
