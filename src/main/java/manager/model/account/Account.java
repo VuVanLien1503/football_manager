@@ -29,7 +29,7 @@ public class Account {
     private String phoneNumber;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<Role> role;
+    private List<Role> roles;
 
     public Account(Long id, String username, String password) {
         this.id = id;
