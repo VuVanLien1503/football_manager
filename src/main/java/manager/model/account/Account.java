@@ -19,7 +19,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
-    @UniqueElements
+    @Column(unique = true)
     private String username;
     @NotNull
     private String password;
