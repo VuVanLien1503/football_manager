@@ -31,8 +31,8 @@ public class Player {
     private MultipartFile multipartFile;
 
     private Long shirtNumber;
-    private boolean formation;
-    private boolean situation;
+    private boolean formation=false;
+    private boolean situation=false;
     private boolean status = true;
 
 

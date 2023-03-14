@@ -2,18 +2,22 @@ package manager.sevice.account_service;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.var;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
+import java.util.Base64;
 import java.util.Date;
 
 @Service
 public class JwtService {
     // key để mã hóa token.
-    private static final String SECRET_KEY = "111111111111";
+    private static final String SECRET_KEY = "99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999";
     // thời gian để token sống.
     private static final long EXPIRE_TIME = 86400000000L;
+
 
     // hàm tạo ra token
     public String createToken(Authentication authentication) {
