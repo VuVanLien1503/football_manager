@@ -51,6 +51,15 @@
                                   </div>`
                 }
                 document.getElementById("typicalCoach").innerHTML = context;
+            }
+        })
+    }
+
+    function displayAllCoach(){
+        $.ajax({
+            url : "http://localhost:8081/coaches",
+            type : "GET",
+            success(data){
 
             }
         })
