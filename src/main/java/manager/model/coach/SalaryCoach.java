@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import manager.model.SalaryType;
 
 import javax.persistence.*;
 
@@ -22,11 +21,11 @@ public class  SalaryCoach {
     private Coach coach;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("salaryTypeId")
-    private SalaryType salaryType;
-    private Long week;
+    @MapsId("weekId")
+    private WeekCoach weekCoach;
 
-    @Column(name = "value_salary")
-    private Double valueSalary;
+    private Long hardSalary;
+    private Long bonusSalary;
+
 
 }
