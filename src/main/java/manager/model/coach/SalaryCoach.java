@@ -26,6 +26,7 @@ public class  SalaryCoach {
 
     private Long hardSalary;
     private Long bonusSalary;
+    private boolean status = true;
 
 
 }

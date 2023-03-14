@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface ICrudService<E> {
-    List<E> listCoach();
+    List<E> findAll();
     Page<E> displayAll(Pageable pageable);
     E save(E e);
     E  findById(Long id);
