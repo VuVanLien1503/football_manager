@@ -18,7 +18,7 @@ public class Coach {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Long age;
+    private String  date;
     private String address;
     @ManyToOne
     private WorkPosition position;
@@ -26,5 +26,6 @@ public class Coach {
     private String imagePath;
     @Transient
     private MultipartFile image;
+    private boolean typicalCoach = false;
     private boolean status = true;
 }

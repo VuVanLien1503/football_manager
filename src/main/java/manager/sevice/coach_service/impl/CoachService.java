@@ -57,6 +57,11 @@ public class CoachService implements ICoachService {
 
 
     @Override
+    public List<Coach> displayTypicalCoach() {
+        return coachRepository.displayTypicalCoach();
+    }
+
+    @Override
     public Coach saveCoach(MultipartFile file, Coach coach) {
         if (file != null) {
             String fileName = file.getOriginalFilename();

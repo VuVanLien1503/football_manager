@@ -1,4 +1,4 @@
-package manager.controller;
+package manager.controller.coach;
 
 import manager.model.coach.Coach;
 import manager.sevice.coach_service.my_interface.ICoachService;
@@ -12,23 +12,33 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/coaches")
+@RequestMapping("/admin")
 @PropertySource("classpath:application.properties")
-public class CoachController {
+public class AdminCoachController {
     @Autowired
     private ICoachService coachService;
 
     //Truy xuất danh sách huấn luyện viên
-    @GetMapping
-    public ResponseEntity<Page<Coach>> displayAllCoach(@PageableDefault(size = 3)Pageable pageable){
+    @GetMapping("/coaches")
+    public ResponseEntity<Page<Coach>> displayAllCoach(@PageableDefault(size = 3) Pageable pageable){
         Page<Coach> coaches = coachService.displayAll(pageable);
         if (coaches.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-            return new ResponseEntity<>(coaches,HttpStatus.OK);
+        return new ResponseEntity<>(coaches,HttpStatus.OK);
 
+    }
+    @GetMapping("coaches/typical")
+    public ResponseEntity<List<Coach>> displayTypicalCoach(){
+        List<Coach> coaches = coachService.displayTypicalCoach();
+        if (coaches.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(coaches,HttpStatus.OK);
     }
 
     //Truy xuất chi tiết 1 HLV
@@ -46,17 +56,5 @@ public class CoachController {
     public ResponseEntity<Coach> saveCoach(@RequestPart(value = "file", required = false) MultipartFile file,
                                            @RequestPart("coach") Coach coach){
         return new ResponseEntity<>(coachService.saveCoach(file,coach),HttpStatus.OK);
-    }
-
-    //Xóa 1 HLV:
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Coach> deleteCoach(@PathVariable("id") Long id){
-        Coach coach = coachService.findById(id);
-        if (coach!=null){
-            coachService.delete(id);
-            return new ResponseEntity<>(coach,HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
