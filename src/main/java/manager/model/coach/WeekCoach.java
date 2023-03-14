@@ -1,4 +1,4 @@
-package manager.model;
+package manager.model.coach;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,15 +10,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-public class SalaryType {
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class WeekCoach {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-
+    private Long name;
 }

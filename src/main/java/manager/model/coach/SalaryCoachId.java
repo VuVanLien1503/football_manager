@@ -8,6 +8,6 @@ import java.io.Serializable;
 public class SalaryCoachId implements Serializable {
     @Column(name = "coach_id")
     private Long coachId;
-    @Column(name = "salary_type_id")
-    private Long salaryTypeId;
+    @Column(name = "week_id")
+    private Long weekId;
 }
