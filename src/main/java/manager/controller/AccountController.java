@@ -36,7 +36,7 @@ public class AccountController {
     @Value("${upload.path}")
     private String upload;
 
-    @PostMapping
+    @PostMapping("/login")
     public AccountToken login(@RequestBody Account account){
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(account.getUsername(), account.getPassword()));
