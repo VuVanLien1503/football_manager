@@ -1,5 +1,5 @@
 function loginUser() {
-    alert("vao`")
+
     let account = {
         "username": $("#username").val(),
         "password": $("#password").val()
@@ -30,17 +30,16 @@ function loginUser() {
 
 function logout(){
     localStorage.removeItem("token");
-    location.href="index.html";
+    location.href="../index.html";
 }
 
 
 function onLoad() {
     if(localStorage.getItem("token")){
-        document.getElementById("login-logout").innerHTML = "<a href='' class='nav-item nav-link' onclick=\"logout()\">logout</a>"
+        document.getElementById("login-logout").innerHTML = "<a href='login-logout/user_information.html' >Profile</a>"
     }
     else {
-        document.getElementById("login-logout").innerHTML = "<a href='login-logout/login.html' class='nav-item nav-link' >login</a>"
-
+        document.getElementById("login-logout").innerHTML = "<a href='login-logout/login.html' >login</a>"
     }
 }
 onLoad()
