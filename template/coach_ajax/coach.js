@@ -1,0 +1,5 @@
+    function displayTypicalCoach(){
+        $.ajax({
+
+        })
+    }
