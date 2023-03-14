@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-public class SalaryCoach {
+public class  SalaryCoach {
     @EmbeddedId
     private SalaryCoachId id;
 

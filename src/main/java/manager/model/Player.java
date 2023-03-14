@@ -33,7 +33,7 @@ public class Player {
     private Long shirtNumber;
     private boolean formation;
     private boolean situation;
-    private boolean status;
+    private boolean status = true;
 
 
 
