@@ -55,6 +55,7 @@ public class AccountController {
         String nameImg = fileImg.getOriginalFilename();
         try {
             FileCopyUtils.copy(fileImg.getBytes(), new File(upload + nameImg));
+            return "/images/users/" + nameImg;
         } catch (IOException e) {
             e.printStackTrace();
         }
