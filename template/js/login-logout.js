@@ -16,15 +16,20 @@ function loginUser() {
         //xử lý khi thành công
         success: function (data) {
 
+
             localStorage.setItem("token", data.token);
+            localStorage.setItem("username", account.username)
             localStorage.setItem("user", JSON.stringify(data));
             alert("Đăng nhập thành công")
+
             location.href = "../index.html";
+
         },
         error: function (err) {
             console.log(err)
             alert("có lỗi")
         }
+
     })
 }
 
@@ -38,10 +43,19 @@ function onLoad() {
 
     if(localStorage.getItem("token")){
         document.getElementById("login-logout").innerHTML = "<a href='login-logout/user_information.html'>Profile</a>"
+
+        let str = `
+                <div>
+            Hello : <a  href="login-logout/user_information.html">${localStorage.getItem("username")}</a>
+               /     <a href='' onclick='logout()'>Logout</a>
+               </div>`
+
+        document.getElementById("helloUser").innerHTML = str;
     }
     else {
         document.getElementById("login-logout").innerHTML = "<a href='login-logout/login.html' >login</a>"
     }
+
 }
 onLoad()
 //
