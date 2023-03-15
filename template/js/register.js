@@ -124,6 +124,7 @@ function updateAccount(avatar) {
     let password = document.getElementById("password").value;
     let phoneNumber = document.getElementById("phoneNumber").value;
     let address = document.getElementById("address").value;
+    let role = document.getElementById("role").value;
 
     let account = {
         "id": id,
@@ -132,6 +133,7 @@ function updateAccount(avatar) {
         "password": password,
         "phoneNumber": phoneNumber,
         "address": address,
+        "role": role,
         "avatar": avatar
     }
     console.log( localStorage.getItem("user"))

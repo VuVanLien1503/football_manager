@@ -11,15 +11,13 @@ function show() {
         success: function (users) {
             console.log(users)
             let str = `  <table class="table table-striped">
-                        <h1>Users manage</h1>
+                        <h1 STYLE="color: #d58512">USER LIST</h1>
                         <thead>
                         <tr>
                             <th>id</th>
                             <th>Full Name</th>
                             <th>Username</th>
-                            <th>Password</th>
                             <th>Role</th>
-                            <th>Address</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -30,13 +28,11 @@ function show() {
                             <td>${user.id}</td>
                             <td>${user.fullName}</td>
                             <td>${user.username}</td>
-                            <td>${user.password}</td>
                             <td>${user.roles[0]}</td>
-                            <td>${user.address}</td>
                             <td>
-                                <button type="button" class="btn btn-primary" onclick="accountDetail(${user.id})"
+                                <a type="button" class="btn btn-primary" href="accountManager.html" onclick="accountManager(${user.id})"
                                 >Detail
-                                </button>
+                                </a>
                             </td>
 
                         </tr>`

@@ -35,15 +35,15 @@ function loginUser() {
     })
 }
 
-function logout(){
+function logout() {
     localStorage.removeItem("token");
-    location.href="../index.html";
+    location.href = "../index.html";
 }
 
 
 function onLoad() {
 
-    if(localStorage.getItem("token")){
+    if (localStorage.getItem("token")) {
         document.getElementById("login-logout").innerHTML = "<a href='login-logout/user_information.html'>Profile</a>"
 
         let str = `
@@ -53,17 +53,18 @@ function onLoad() {
                </div>`
 
         document.getElementById("helloUser").innerHTML = str;
-    }
-    else {
+    } else {
         document.getElementById("login-logout").innerHTML = "<a href='login-logout/login.html' >login</a>"
     }
 
 }
+
 onLoad()
 
 function accountDetail() {
 
-  let id = localStorage.getItem("id");
+    let id = localStorage.getItem("id");
+
     $.ajax({
         type: "GET",
         headers: {
@@ -86,15 +87,18 @@ function accountDetail() {
                       <img id="blah1" src="${user.avatar}" width="120" class="rounded-circle" />
                       `
 
-            document.getElementById("showAvatar").innerHTML = img;
+            // document.getElementById("showAvatar").innerHTML = img;
             document.getElementById("profileImg").innerHTML = img;
             document.getElementById("fullName1").innerHTML = user.fullName;
             document.getElementById("address1").innerHTML = user.address;
-            document.getElementById("role").innerHTML = localStorage.getItem("role")
+            document.getElementById("roleUser").innerHTML = localStorage.getItem("role")
+            console.log(localStorage.getItem("role"))
         },
         error: function (err) {
             console.log(err)
             alert("có lỗi")
         }
     })
+
+    // event.preventDefault()
 }
