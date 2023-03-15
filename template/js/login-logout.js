@@ -19,6 +19,7 @@ function loginUser() {
 
             localStorage.setItem("token", data.token);
             localStorage.setItem("username", data.username);
+            localStorage.setItem("role", data.role);
             localStorage.setItem("id", data.id);
             localStorage.setItem("user", JSON.stringify(data));
             alert("Đăng nhập thành công")
@@ -85,7 +86,7 @@ function accountDetail() {
 
             document.getElementById("fullName1").innerHTML = user.fullName;
             document.getElementById("address1").innerHTML = user.address;
-            document.getElementById("role").innerHTML = user.role.name;
+            document.getElementById("role").innerHTML = localStorage.getItem("role")
         },
         error: function (err) {
             console.log(err)
