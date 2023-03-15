@@ -1,37 +1,9 @@
 
     function homeCoach(){
-        displayTypicalCoach()
+        displayTypicalCoachAdmin()
+        displayAllCoach(0)
     }
     window.onload = homeCoach()
-    //Hiển thị HLV tiêu biểu bên Coach
-    function displayTypicalCoach(){
-        $.ajax({
-            url : "http://localhost:8081/coaches/typical",
-            type: "GET",
-            success(data){
-                let context = ""
-                for (let i = 0; i < data.length; i++) {
-                    context += `<div class="col-sm-12 col-md-4">
-                                    <div class="coach-item">
-                                      <div class="gambar">
-                                        <img src="${data[i].imagePath}" style="width: 500px; height: 500px" alt="Coach" class="img-responsive">
-                                      </div>
-                                      <div class="item-body">
-                                        <div class="name">
-                                          ${data[i].name}
-                                        </div>
-                                        <div class="position">
-                                          ${data[i].position.name}
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>`
-                }
-                document.getElementById("typicalCoach").innerHTML = context;
-
-            }
-        })
-    }
     //Hiển thị HLV tiêu biểu bên admin
     function displayTypicalCoachAdmin(){
         $.ajax({
@@ -62,9 +34,9 @@
     }
 
     //Hiển thi danh sách tất cả HLV
-    function displayAllCoach(page){
+    function displayAllCoachAdmin(page){
         $.ajax({
-            url : "http://localhost:8081/coaches?page=" + page + "&size=3",
+            url : "http://localhost:8081/admin/coaches?page=" + page + "&size=3",
             type : "GET",
             success(data){
                 displayTableCoach(data.content)
@@ -95,7 +67,6 @@
                         <th>Work Position</th>
                         <th>Hard Salary</th>
                         <th>Bonus Salary</th>              
-                        <th colspan="2" style="text-align: center">Action</th>
                     </tr>
                     </thead>
                     <tbody>`
@@ -109,8 +80,6 @@
                             <td>${data[i].position.name}</td>
                             <td>${data[i].sumHardSalary}</td>
                             <td>${data[i].sumBonusSalary}</td>
-                            <td><button class="btn btn-warning" onclick="updateSalaryCoach(${data[i].id})">Update</button></td>
-                            <td><button class="btn btn-danger" onclick="deleteSalaryCoach(${data[i].id})">Delete</button></td>
                             </tr>`
             }
         context += `</tbody> </table> </div>`
@@ -124,10 +93,14 @@
     }
     //hàm lùi page
     function isPreviousCoach(pageNumber) {
-        displayAllCoach(pageNumber-1)
+        displayAllCoachAdmin(pageNumber-1)
     }
 
     //hàm tiến page
     function isNextCoach(pageNumber) {
-        displayAllCoach(pageNumber+1)
+        displayAllCoachAdmin(pageNumber+1)
     }
+
+
+
+

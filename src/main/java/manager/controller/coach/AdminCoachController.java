@@ -32,7 +32,7 @@ public class AdminCoachController {
         return new ResponseEntity<>(coaches,HttpStatus.OK);
 
     }
-    @GetMapping("coaches/typical")
+    @GetMapping("/coaches/typical")
     public ResponseEntity<List<Coach>> displayTypicalCoach(){
         List<Coach> coaches = coachService.displayTypicalCoach();
         if (coaches.isEmpty()){
@@ -42,7 +42,7 @@ public class AdminCoachController {
     }
 
     //Truy xuất chi tiết 1 HLV
-    @GetMapping("/{id}")
+    @GetMapping("/coaches/{id}")
     public ResponseEntity<Coach> findCoachById(@PathVariable("id")Long id){
         Coach coach = coachService.findById(id);
         if (coach!=null){
@@ -52,9 +52,21 @@ public class AdminCoachController {
     }
 
     //Lưu, update HLV
-    @PostMapping("/save")
+    @PostMapping("/coaches/save")
     public ResponseEntity<Coach> saveCoach(@RequestPart(value = "file", required = false) MultipartFile file,
                                            @RequestPart("coach") Coach coach){
         return new ResponseEntity<>(coachService.saveCoach(file,coach),HttpStatus.OK);
+    }
+
+        //Xóa 1 HLV:
+
+    @DeleteMapping("/coaches/{id}")
+    public ResponseEntity<Coach> deleteCoach(@PathVariable("id") Long id){
+        Coach coach = coachService.findById(id);
+        if (coach!=null){
+            coachService.delete(id);
+            return new ResponseEntity<>(coach,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
