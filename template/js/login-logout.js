@@ -18,7 +18,8 @@ function loginUser() {
 
 
             localStorage.setItem("token", data.token);
-            localStorage.setItem("username", account.username)
+            localStorage.setItem("username", data.username);
+            localStorage.setItem("id", data.id);
             localStorage.setItem("user", JSON.stringify(data));
             alert("Đăng nhập thành công")
 
@@ -58,34 +59,37 @@ function onLoad() {
 
 }
 onLoad()
-//
-// function accountDetail(id) {
-//     $.ajax({
-//         type: "GET",
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json',
-//             'Authorization': 'Bearer ' + localStorage.getItem("token")
-//         },
-//         url: "http://localhost:8081/users/" + id,
-//         data: JSON.stringify(id),
-//         //xử lý khi thành công
-//         success: function (user) {
-//             document.getElementById("id").value = user.id;
-//             $("#fullName").val(user.fullName)
-//             $("#username").val(user.username);
-//             $("#password").val(user.password);
-//             $("#avatar").val(user.avatar);
-//             $("#address").val(user.address);
-//             $("#phoneNumber").val(user.phoneNumber);
-//
-//             document.getElementById("fullName1").innerHTML = user.fullName;
-//             document.getElementById("address1").innerHTML = user.address;
-//             document.getElementById("role").innerHTML = user.role.name;
-//         },
-//         error: function (err) {
-//             console.log(err)
-//             alert("có lỗi")
-//         }
-//     })
-// }
+
+function accountDetail() {
+
+
+  let id = localStorage.getItem("id");
+    $.ajax({
+        type: "GET",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem("token")
+        },
+        url: "http://localhost:8081/users/" + id,
+        //xử lý khi thành công
+        success: function (user) {
+            console.log(user)
+            document.getElementById("id").value = user.id;
+            $("#fullName").val(user.fullName)
+            $("#username").val(user.username);
+            $("#password").val(user.password);
+            $("#avatar").val(user.avatar);
+            $("#address").val(user.address);
+            $("#phoneNumber").val(user.phoneNumber);
+
+            document.getElementById("fullName1").innerHTML = user.fullName;
+            document.getElementById("address1").innerHTML = user.address;
+            document.getElementById("role").innerHTML = user.role.name;
+        },
+        error: function (err) {
+            console.log(err)
+            alert("có lỗi")
+        }
+    })
+}
