@@ -69,6 +69,7 @@ function createAccount(avatar) {
         data: JSON.stringify(account),
         //xử lý khi thành công
         success: function (data) {
+            console.log(account)
             alert("Đăng ký thành công");
             location.href = "../index.html";
         },
@@ -90,10 +91,11 @@ function showAvatar1() {
 
 
 function upDateAvatar() {
-    alert("vao`")
+    // alert("vao`")
     let fileImg = document.getElementById("avatar1").files;
     var formData = new FormData();
     formData.append("fileImg", fileImg[0]);
+
 
     $.ajax({
         contentType: false,
@@ -107,13 +109,15 @@ function upDateAvatar() {
         success: function (avatar) {
             updateAccount(avatar)
         }, error: function (err) {
-            alert("co loi xay ra")
+            console.log(formData)
+            alert("Có lỗi xảy ra khi upload ảnh")
             console.log(err)
         }
     })
 }
 
 function updateAccount(avatar) {
+    // alert("jo")
     let id = document.getElementById("id").value;
     let fullName = document.getElementById("fullName").value;
     let username = document.getElementById("username").value;
@@ -130,6 +134,8 @@ function updateAccount(avatar) {
         "address": address,
         "avatar": avatar
     }
+    console.log( localStorage.getItem("user"))
+
 
     $.ajax({
         type: "Put",

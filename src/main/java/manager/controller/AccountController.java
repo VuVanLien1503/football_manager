@@ -51,11 +51,13 @@ public class AccountController {
     }
 
     @PostMapping("/upAvatar")
-    public String upAvatar(@RequestParam MultipartFile fileImg) {
+    public String upAvatar(@RequestParam(required = false) MultipartFile fileImg) {
+
         String nameImg = fileImg.getOriginalFilename();
+
         try {
             FileCopyUtils.copy(fileImg.getBytes(), new File(upload + nameImg));
-            return "/images/users/" + nameImg;
+            return "../images/users/" + nameImg;
         } catch (IOException e) {
             e.printStackTrace();
         }

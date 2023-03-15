@@ -16,9 +16,9 @@ function loginUser() {
         //xử lý khi thành công
         success: function (data) {
 
-
             localStorage.setItem("token", data.token);
             localStorage.setItem("username", data.username);
+            localStorage.setItem("avatar", data.avatar);
             localStorage.setItem("role", data.role);
             localStorage.setItem("id", data.id);
             localStorage.setItem("user", JSON.stringify(data));
@@ -63,7 +63,6 @@ onLoad()
 
 function accountDetail() {
 
-
   let id = localStorage.getItem("id");
     $.ajax({
         type: "GET",
@@ -80,10 +79,15 @@ function accountDetail() {
             $("#fullName").val(user.fullName)
             $("#username").val(user.username);
             $("#password").val(user.password);
-            $("#avatar").val(user.avatar);
             $("#address").val(user.address);
             $("#phoneNumber").val(user.phoneNumber);
 
+            let img = `
+                      <img id="blah1" src="${user.avatar}" width="120" class="rounded-circle" />
+                      `
+
+            document.getElementById("showAvatar").innerHTML = img;
+            document.getElementById("profileImg").innerHTML = img;
             document.getElementById("fullName1").innerHTML = user.fullName;
             document.getElementById("address1").innerHTML = user.address;
             document.getElementById("role").innerHTML = localStorage.getItem("role")
