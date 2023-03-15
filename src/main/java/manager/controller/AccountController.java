@@ -38,7 +38,7 @@ public class AccountController {
     private String upload;
 
     @PostMapping("/login")
-    public AccountToken login(@RequestBody Account account){
+    public AccountToken login(@RequestBody Account account) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(account.getUsername(), account.getPassword()));
 
@@ -46,12 +46,12 @@ public class AccountController {
 
         String token = jwtService.createToken(authentication);
         Account account1 = accountService.findAccountByUserName(account.getUsername());
-        AccountToken accountToken = new AccountToken(account1.getId(),account1.getUsername(),account1.getAvatar(),token,account1.getRoles());
+        AccountToken accountToken = new AccountToken(account1.getId(), account1.getUsername(), account1.getAvatar(), token, account1.getRoles());
         return accountToken;
     }
 
     @PostMapping("/upAvatar")
-    public String upAvatar(@RequestParam MultipartFile fileImg){
+    public String upAvatar(@RequestParam MultipartFile fileImg) {
         String nameImg = fileImg.getOriginalFilename();
         try {
             FileCopyUtils.copy(fileImg.getBytes(), new File(upload + nameImg));
@@ -63,19 +63,22 @@ public class AccountController {
     }
 
     @PostMapping("/register")
-    public void register(@RequestBody Account account){
-      accountService.save(account);
+    public void register(@RequestBody Account account) {
+        accountService.save(account);
     }
+
     @GetMapping("/{id}")
-    public Account findOne(@PathVariable Long id){
+    public Account findOne(@PathVariable Long id) {
         return accountService.findAccountById(id);
     }
 
     @GetMapping("/listUser")
-    public List<Account> findAll(){
+    public List<Account> findAll() {
         return accountService.findAll();
     }
 
-
-
+    @PutMapping("/update/{id}")
+    public void update(@RequestBody Account account) {
+        accountService.save(account);
+    }
 }
