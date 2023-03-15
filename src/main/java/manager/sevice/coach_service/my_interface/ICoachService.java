@@ -12,4 +12,5 @@ public interface ICoachService extends ICrudService<Coach> {
     List<Coach> displayTypicalCoach();
     Coach saveCoach(MultipartFile file, Coach coach);
 
+
 }

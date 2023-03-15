@@ -23,4 +23,7 @@ public interface ICoachRepository extends JpaRepository<Coach, Long> {
     @Modifying
     @Query(value = "UPDATE Coach as c set c.status = false where c.id = :id")
     void deleteCoach(@Param("id") Long id);
+
+
+
 }

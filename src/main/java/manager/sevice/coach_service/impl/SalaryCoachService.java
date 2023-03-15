@@ -1,6 +1,7 @@
 package manager.sevice.coach_service.impl;
 
 import manager.model.coach.SalaryCoach;
+import manager.repository.coach.ICoachRepository;
 import manager.repository.coach.ISalaryCoachRepository;
 import manager.sevice.coach_service.my_interface.ISalaryCoachService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +48,25 @@ public class SalaryCoachService implements ISalaryCoachService {
     @Override
     public void deleteSalary(Long idCoach, Long idWeak) {
         salaryCoachRepository.deleteSalaryDoubleId(idCoach,idWeak);
+    }
+
+    @Override
+    public Long sumHardSalaryCoach(Long idCoach) {
+       return salaryCoachRepository.sumHardSalaryCoach(idCoach);
+    }
+
+    @Override
+    public Long sumBonusSalaryCoach(Long idCoach) {
+        return salaryCoachRepository.sumBonusSalaryCoach(idCoach);
+    }
+
+    @Override
+    public void updateSumHardSalary(Long idCoach) {
+         salaryCoachRepository.updateSumHardSalary(idCoach,sumHardSalaryCoach(idCoach));
+    }
+
+    @Override
+    public void updateSumBonusSalary(Long idCoach) {
+        salaryCoachRepository.updateSumBonusSalary(idCoach,sumBonusSalaryCoach(idCoach));
     }
 }
