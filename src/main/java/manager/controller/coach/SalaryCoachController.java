@@ -36,4 +36,26 @@ public class SalaryCoachController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @PostMapping("/hard_salary_coach/{idCoach}")
+    public ResponseEntity<Long> sumHardSalaryCoach(@PathVariable("idCoach")Long idCoach){
+        Long sum = salaryCoachService.sumHardSalaryCoach(idCoach);
+        if (sum == 0L){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        salaryCoachService.updateSumHardSalary(idCoach);
+        return new ResponseEntity<>(sum,HttpStatus.OK);
+    }
+
+    @PostMapping("/bonus_salary_coach/{idCoach}")
+    public ResponseEntity<Long> sumBonusSalaryCoach(@PathVariable("idCoach")Long idCoach){
+        Long sum = salaryCoachService.sumBonusSalaryCoach(idCoach);
+        if (sum == 0L){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        salaryCoachService.updateSumBonusSalary(idCoach);
+        return new ResponseEntity<>(sum,HttpStatus.OK);
+    }
+
+
 }

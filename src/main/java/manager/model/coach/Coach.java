@@ -26,6 +26,8 @@ public class Coach {
     private String imagePath;
     @Transient
     private MultipartFile image;
+    private Long sumHardSalary;
+    private Long sumBonusSalary;
     private boolean typicalCoach = false;
     private boolean status = true;
 }
