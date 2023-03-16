@@ -27,6 +27,10 @@ public class PlayerController {
     public ResponseEntity<Page<Player>> primaryTeam(@PageableDefault(size = 11) Pageable pageable){
         return new ResponseEntity<>(iPlayerRepository.primaryTeam(pageable), HttpStatus.OK);
     }
+    @GetMapping("/player-secondary-teams")
+    public ResponseEntity<Page<Player>> secondaryTeam(@PageableDefault(size = 11) Pageable pageable){
+        return new ResponseEntity<>(iPlayerRepository.secondaryTeam(pageable), HttpStatus.OK);
+    }
     @GetMapping("/players/{id}")
     public ResponseEntity<Optional<Player>> findById(@PathVariable Long id){
         Optional<Player> player = iPlayerRepository.findById(id);

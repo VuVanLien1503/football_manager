@@ -20,7 +20,7 @@ public interface IPlayerRepository extends JpaRepository<Player,Long> {
     Page<Player> primaryTeam(Pageable pageable);
 
     @Query(value = "select p from Player p where p.status=true and p.formation=false and p.situation=false ")
-    Page<Player> subLineup(Pageable pageable);
+    Page<Player> secondaryTeam(Pageable pageable);
     @Query(value = "select p from SalaryPlayer p where p.player.id=:id_player and p.week.id=:id_week")
     SalaryPlayer listSalary(@Param("id_player")Long id_player,@Param("id_week")Long id_week);
 }
