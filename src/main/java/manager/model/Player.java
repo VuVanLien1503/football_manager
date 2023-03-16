@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import manager.model.player.index_player.IndexPlayer;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
@@ -29,6 +30,8 @@ public class Player {
     private String img;
     @Transient
     private MultipartFile multipartFile;
+    @ManyToOne
+    private IndexPlayer indexPlayer;
 
     private Long shirtNumber;
     private boolean formation=false;

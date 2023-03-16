@@ -1,5 +1,6 @@
 package manager.sevice.player_sevice;
 
+import manager.model.Player;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,4 +14,6 @@ public interface ICoreService <T,E>{
     Optional<T> findById(Long id);
     void save (T t);
     void delete(Long id);
+    T showIndex(Long id);
+    List<E> salary(Long id);
 }
