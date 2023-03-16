@@ -1,4 +1,3 @@
-
 function showAvatar() {
     let imgInp = document.getElementById("avatar");
     let blah = document.getElementById("blah");
@@ -17,7 +16,7 @@ function upAvatar() {
     $.ajax({
         contentType: false,
         processData: false,
-        headers:{
+        headers: {
             'Authorization': 'Bearer ' + localStorage.getItem("token")
         },
         type: "POST",
@@ -40,17 +39,15 @@ function createAccount(avatar) {
     let password1 = document.getElementById("password1").value;
     let role = document.getElementById("role").value;
 
-
-
-    if(password!== password1){
+    if (password !== password1) {
         document.getElementById("thongBao").innerHTML = "MK không trùng khớp"
         return
     }
-    if(username.toUpperCase()==="ADMIN"){
+    if (username.toUpperCase() === "ADMIN") {
         document.getElementById("thongBao").innerHTML = "Bạn không thể đăng ký bằng tài khoản này"
         return;
     }
-    if(password.length<5){
+    if (password.length < 5) {
         document.getElementById("thongBao").innerHTML = "Mk quá ngắn,dưới 5 ký tự, ko khả thi"
         return;
     }
@@ -73,7 +70,6 @@ function createAccount(avatar) {
         data: JSON.stringify(account),
         //xử lý khi thành công
         success: function (data) {
-            console.log(account)
             alert("Đăng ký thành công");
             location.href = "../index.html";
         },
@@ -83,7 +79,6 @@ function createAccount(avatar) {
         }
     })
 }
-
 
 
 function showAvatar1() {
@@ -104,7 +99,7 @@ function upDateAvatar() {
     $.ajax({
         contentType: false,
         processData: false,
-        headers:{
+        headers: {
             'Authorization': 'Bearer ' + localStorage.getItem("token")
         },
         type: "POST",
@@ -130,8 +125,9 @@ function updateAccount(avatar) {
     let address = document.getElementById("address").value;
     let role = document.getElementById("role").value;
 
-    if(password.length<5){
-       alert("Mk quá ngắn,dưới 5 ký tự, ko khả thi")
+
+    if (password.length < 5) {
+        alert("Mk quá ngắn,dưới 5 ký tự, ko khả thi")
         return;
     }
 
@@ -142,10 +138,13 @@ function updateAccount(avatar) {
         "password": password,
         "phoneNumber": phoneNumber,
         "address": address,
-        "role": role,
+        "roles": [{
+            'id': role
+        }]
+        ,
         "avatar": avatar
     }
-    console.log( localStorage.getItem("user"))
+    console.log(account)
 
 
     $.ajax({

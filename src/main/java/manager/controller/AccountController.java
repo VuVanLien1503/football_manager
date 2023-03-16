@@ -2,6 +2,7 @@ package manager.controller;
 
 import manager.model.account.Account;
 import manager.model.account.AccountToken;
+import manager.model.account.Role;
 import manager.sevice.account_service.AccountService;
 import manager.sevice.account_service.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @PropertySource("classpath:application.properties")
@@ -33,6 +35,7 @@ public class AccountController {
 
     @Autowired
     private AccountService accountService;
+
 
     @Value("${upload.path}")
     private String upload;
@@ -55,7 +58,6 @@ public class AccountController {
 
         if(fileImg == null){
             return "../images/users/avatar.png";
-
         }
         String nameImg = fileImg.getOriginalFilename();
 
@@ -70,6 +72,11 @@ public class AccountController {
 
     @PostMapping("/register")
     public void register(@RequestBody Account account) {
+        Role role = new Role();
+        role.setId(4L);
+        List<Role> roles = new ArrayList<>();
+        roles.add(role);
+        account.setRoles(roles);
         accountService.save(account);
     }
 

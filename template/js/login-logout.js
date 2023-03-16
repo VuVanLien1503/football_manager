@@ -91,8 +91,10 @@ function accountDetail() {
             document.getElementById("profileImg").innerHTML = img;
             document.getElementById("fullName1").innerHTML = user.fullName;
             document.getElementById("address1").innerHTML = user.address;
-            document.getElementById("roleUser").innerHTML = localStorage.getItem("role")
-            console.log(localStorage.getItem("role"))
+            let role = user.roles[0].name
+             role = role.slice(5)
+            document.getElementById("roleUser").innerHTML = role
+
         },
         error: function (err) {
             console.log(err)

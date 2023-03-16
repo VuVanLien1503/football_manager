@@ -23,14 +23,15 @@ function show() {
                         </thead>
                         <tbody>`;
             for (const user of users) {
+                console.log(user)
                 str += `  
                         <tr>
                             <td>${user.id}</td>
                             <td>${user.fullName}</td>
                             <td>${user.username}</td>
-                            <td>${user.roles[0]}</td>
+                            <td>${user.roles[0].name}</td>
                             <td>
-                                <a type="button" class="btn btn-primary" href="accountManager.html" onclick="accountManager(${user.id})"
+                                <a type="button" class="btn btn-primary"  onclick="accountManager(${user.id})"
                                 >Detail
                                 </a>
                             </td>
@@ -61,7 +62,7 @@ if (localStorage.getItem("username") === "admin") {
 }
 
 function accountManager(id) {
-    alert(id)
+
     $.ajax({
         type: "GET",
         headers: {
@@ -72,9 +73,7 @@ function accountManager(id) {
         url: "http://localhost:8081/users/" + id,
         //xử lý khi thành công
         success: function (user) {
-            alert("2")
-            console.log("Hi")
-            console.log(user)
+
             document.getElementById("id").value = user.id;
             $("#fullName").val(user.fullName)
             $("#username").val(user.username);
@@ -83,10 +82,32 @@ function accountManager(id) {
             $("#phoneNumber").val(user.phoneNumber);
 
             let img = `
-                      <img id="blah1" src="${user.avatar}" width="120" class="rounded-circle" />
+                      <img id="blah" src="${user.avatar}" width="120" class="rounded-circle" />
                       `
 
-            document.getElementById("showAvatar").innerHTML = img;
+
+            // document.getElementById("showAvatar1").innerHTML = img;
+
+            let str = `
+                  <div class="col-sm-3">
+                                    <h6 class="mb-0">Grant access</h6>
+                                    <select class="btn btn-primary" id="role">
+                                        <option value="1">ADMIN</option>
+                                        <option value="2">COACH</option>
+                                        <option value="3">PLAYER</option>
+                                        <option value="4">USER</option>
+                                    </select>
+                                </div>
+            `
+
+            document.getElementById("showDetail").innerHTML = str;
+            document.getElementById("profileImg").innerHTML = img;
+            document.getElementById("fullName1").innerHTML = user.fullName;
+            document.getElementById("address1").innerHTML = user.address;
+
+            let role = user.roles[0].name
+            role = role.slice(5)
+            document.getElementById("roleUser").innerHTML = role
 
         },
         error: function (err) {
@@ -94,7 +115,7 @@ function accountManager(id) {
             alert("có lỗi")
         }
     });
-// event.preventDefault()
+event.preventDefault()
 }
 
 function xoaUser(id) {
