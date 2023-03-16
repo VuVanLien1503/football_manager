@@ -1,9 +1,37 @@
 
     function homeCoach(){
-        displayTypicalCoachAdmin()
+        displayTypicalCoach()
         displayAllCoach(0)
     }
     window.onload = homeCoach()
+    //Hiển thị HLV tiêu biểu bên Coach
+    function displayTypicalCoach(){
+        $.ajax({
+            url : "http://localhost:8081/coaches/typical",
+            type: "GET",
+            success(data){
+                let context = ""
+                for (let i = 0; i < data.length; i++) {
+                    context += `<div class="col-sm-12 col-md-4">
+                                        <div class="coach-item">
+                                          <div class="gambar">
+                                            <img src="${data[i].imagePath}" style="width: 500px; height: 500px" alt="Coach" class="img-responsive">
+                                          </div>
+                                          <div class="item-body">
+                                            <div class="name">
+                                              ${data[i].name}
+                                            </div>
+                                            <div class="position">
+                                              ${data[i].position.name}
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>`
+                }
+                document.getElementById("typicalCoach").innerHTML = context;
+            }
+        })
+    }
     //Hiển thị HLV tiêu biểu bên admin
     function displayTypicalCoachAdmin(){
         $.ajax({
@@ -32,7 +60,26 @@
             }
         })
     }
-
+    //Hiển thi danh sách tất cả HLV
+    function displayAllCoach(page){
+        $.ajax({
+            url : "http://localhost:8081/coaches?page=" + page + "&size=3",
+            type : "GET",
+            success(data){
+                displayTableCoach(data.content)
+                displayCoachPage(data)
+                if (data.pageable.pageNumber === 0) {
+                    document.getElementById("backup").hidden = true
+                }
+                //điều kiện bỏ nút next
+                if (data.pageable.pageNumber + 1 === data.totalPages) {
+                    document.getElementById("next").hidden = true
+                }
+                $("#coachForm").hide()
+                $("#creatFormCoach").show()
+            }
+        })
+    }
     //Hiển thi danh sách tất cả HLV
     function displayAllCoachAdmin(page){
         $.ajax({
@@ -63,7 +110,7 @@
                         <th>Image</th>
                         <th>Name</th>
                         <th>Age</th>
-                        <th>Address</th>
+                        <th>Nation</th>
                         <th>Work Position</th>
                         <th>Hard Salary</th>
                         <th>Bonus Salary</th>              

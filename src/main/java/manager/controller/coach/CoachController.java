@@ -51,13 +51,13 @@ public class CoachController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-//    //Lưu, update HLV
-//    @PostMapping("/save")
-//    public ResponseEntity<Coach> saveCoach(@RequestPart(value = "file", required = false) MultipartFile file,
-//                                           @RequestPart("coach") Coach coach){
-//        return new ResponseEntity<>(coachService.saveCoach(file,coach),HttpStatus.OK);
-//    }
-//
+    //Lưu, update HLV
+    @PostMapping("/save")
+    public ResponseEntity<Coach> saveCoach(@RequestPart(value = "file", required = false) MultipartFile file,
+                                           @RequestPart("coach") Coach coach){
+        return new ResponseEntity<>(coachService.saveCoach(file,coach),HttpStatus.OK);
+    }
+
 //    //Xóa 1 HLV:
 //
 //    @DeleteMapping("/{id}")

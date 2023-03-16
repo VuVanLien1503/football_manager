@@ -1,7 +1,9 @@
 package manager.controller.coach;
 
 import manager.model.coach.Coach;
+import manager.model.coach.WorkPosition;
 import manager.sevice.coach_service.my_interface.ICoachService;
+import manager.sevice.coach_service.my_interface.IWorkPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.domain.Page;
@@ -21,6 +23,8 @@ import java.util.List;
 public class AdminCoachController {
     @Autowired
     private ICoachService coachService;
+    @Autowired
+    private IWorkPositionService workPositionService;
 
     //Truy xuất danh sách huấn luyện viên
     @GetMapping("/coaches")
@@ -69,4 +73,16 @@ public class AdminCoachController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+//    Truy xuất danh sách vị trí HLV
+
+    @GetMapping("/coaches/positions")
+    public ResponseEntity<List<WorkPosition>> listWorkPosition(){
+        List<WorkPosition> workPositions = workPositionService.findAll();
+        if (workPositions.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(workPositions, HttpStatus.OK);
+    }
 }
+
