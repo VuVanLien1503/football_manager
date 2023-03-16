@@ -29,7 +29,7 @@ function loginUser() {
         },
         error: function (err) {
             console.log(err)
-            alert("có lỗi")
+            alert("Mật khẩu hoặc tài khoản không đúng! ")
         }
 
     })
@@ -82,6 +82,7 @@ function accountDetail() {
             $("#password").val(user.password);
             $("#address").val(user.address);
             $("#phoneNumber").val(user.phoneNumber);
+            $("#role").val(user.roles[0].id);
 
             let img = `
                       <img id="blah1" src="${user.avatar}" width="120" class="rounded-circle" />
@@ -91,8 +92,10 @@ function accountDetail() {
             document.getElementById("profileImg").innerHTML = img;
             document.getElementById("fullName1").innerHTML = user.fullName;
             document.getElementById("address1").innerHTML = user.address;
-            document.getElementById("roleUser").innerHTML = localStorage.getItem("role")
-            console.log(localStorage.getItem("role"))
+            let role = user.roles[0].name
+            role = role.slice(5)
+            document.getElementById("roleUser").innerHTML = role
+
         },
         error: function (err) {
             console.log(err)

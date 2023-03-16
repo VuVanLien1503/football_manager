@@ -1,4 +1,3 @@
-
 function showAvatar() {
     let imgInp = document.getElementById("avatar");
     let blah = document.getElementById("blah");
@@ -8,15 +7,16 @@ function showAvatar() {
 }
 
 function upAvatar() {
-    alert("vao`")
+
     let fileImg = document.getElementById("avatar").files;
+
     var formData = new FormData();
     formData.append("fileImg", fileImg[0]);
 
     $.ajax({
         contentType: false,
         processData: false,
-        headers:{
+        headers: {
             'Authorization': 'Bearer ' + localStorage.getItem("token")
         },
         type: "POST",
@@ -25,6 +25,7 @@ function upAvatar() {
         success: function (avatar) {
             createAccount(avatar)
         }, error: function (err) {
+
             alert("co loi xay ra")
             console.log(err)
         }
@@ -38,15 +39,15 @@ function createAccount(avatar) {
     let password1 = document.getElementById("password1").value;
     let role = document.getElementById("role").value;
 
-    if(password!== password1){
+    if (password !== password1) {
         document.getElementById("thongBao").innerHTML = "MK không trùng khớp"
         return
     }
-    if(username.toUpperCase()==="ADMIN"){
+    if (username.toUpperCase() === "ADMIN") {
         document.getElementById("thongBao").innerHTML = "Bạn không thể đăng ký bằng tài khoản này"
         return;
     }
-    if(password.length<5){
+    if (password.length < 5) {
         document.getElementById("thongBao").innerHTML = "Mk quá ngắn,dưới 5 ký tự, ko khả thi"
         return;
     }
@@ -69,7 +70,6 @@ function createAccount(avatar) {
         data: JSON.stringify(account),
         //xử lý khi thành công
         success: function (data) {
-            console.log(account)
             alert("Đăng ký thành công");
             location.href = "../index.html";
         },
@@ -79,7 +79,6 @@ function createAccount(avatar) {
         }
     })
 }
-
 
 
 function showAvatar1() {
@@ -100,7 +99,7 @@ function upDateAvatar() {
     $.ajax({
         contentType: false,
         processData: false,
-        headers:{
+        headers: {
             'Authorization': 'Bearer ' + localStorage.getItem("token")
         },
         type: "POST",
@@ -124,23 +123,54 @@ function updateAccount(avatar) {
     let password = document.getElementById("password").value;
     let phoneNumber = document.getElementById("phoneNumber").value;
     let address = document.getElementById("address").value;
-    let role = document.getElementById("role").value;
 
-    let account = {
-        "id": id,
-        "fullName": fullName,
-        "username": username,
-        "password": password,
-        "phoneNumber": phoneNumber,
-        "address": address,
-        "role": role,
-        "avatar": avatar
+
+    if (password.length < 5) {
+        alert("Mk quá ngắn,dưới 5 ký tự, ko khả thi")
+        return;
     }
-    console.log( localStorage.getItem("user"))
+
+
+    let account;
+
+    if (document.getElementById("showRoles").value === undefined) {
+
+        account = {
+            "id": id,
+            "fullName": fullName,
+            "username": username,
+            "password": password,
+            "phoneNumber": phoneNumber,
+            "address": address,
+            "roles": [{
+                'id': document.getElementById("role").value
+            }]
+            ,
+            "avatar": avatar
+        }
+
+
+    } else {
+        account = {
+            "id": id,
+            "fullName": fullName,
+            "username": username,
+            "password": password,
+            "phoneNumber": phoneNumber,
+            "roles": [{
+                'id': document.getElementById("showRoles").value
+            }],
+            "address": address,
+            "avatar": avatar
+        }
+    }
+
+
+    console.log(account)
 
 
     $.ajax({
-        type: "Put",
+        type: "PUT",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
