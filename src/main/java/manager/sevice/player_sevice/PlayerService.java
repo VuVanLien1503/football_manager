@@ -44,4 +44,14 @@ public class PlayerService implements IPlayerService{
     public void delete(Long id) {
         iPlayerRepository.deleteById(id);
     }
+
+    @Override
+    public Player showIndex(Long id) {
+        return iPlayerRepository.showIndexPlayer(id);
+    }
+
+    @Override
+    public List<SalaryPlayer> salary(Long id) {
+        return (List<SalaryPlayer>) iPlayerRepository.listSalaryByOneWeek(id);
+    }
 }
