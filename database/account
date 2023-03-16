@@ -1,0 +1,4 @@
+INSERT INTO `football_manager`.`account` (`password`, `username`) VALUES ('12345', 'admin');
+INSERT INTO `football_manager`.`account` (`password`, `username`) VALUES ('12345', 'lien');
+INSERT INTO `football_manager`.`account` (`password`, `username`) VALUES ('12345', 'hoang');
+INSERT INTO `football_manager`.`account` (`password`, `username`) VALUES ('12345', 'vuong');

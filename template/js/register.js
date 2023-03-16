@@ -8,8 +8,9 @@ function showAvatar() {
 }
 
 function upAvatar() {
-    alert("vao`")
+
     let fileImg = document.getElementById("avatar").files;
+
     var formData = new FormData();
     formData.append("fileImg", fileImg[0]);
 
@@ -25,6 +26,7 @@ function upAvatar() {
         success: function (avatar) {
             createAccount(avatar)
         }, error: function (err) {
+
             alert("co loi xay ra")
             console.log(err)
         }
@@ -37,6 +39,8 @@ function createAccount(avatar) {
     let password = document.getElementById("password").value;
     let password1 = document.getElementById("password1").value;
     let role = document.getElementById("role").value;
+
+
 
     if(password!== password1){
         document.getElementById("thongBao").innerHTML = "MK không trùng khớp"
@@ -125,6 +129,11 @@ function updateAccount(avatar) {
     let phoneNumber = document.getElementById("phoneNumber").value;
     let address = document.getElementById("address").value;
     let role = document.getElementById("role").value;
+
+    if(password.length<5){
+       alert("Mk quá ngắn,dưới 5 ký tự, ko khả thi")
+        return;
+    }
 
     let account = {
         "id": id,

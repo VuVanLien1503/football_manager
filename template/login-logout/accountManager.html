@@ -61,6 +61,7 @@
     </style>
     <link rel="stylesheet" href="../css/style.css">
 
+
 </head>
 <body>
 
@@ -132,7 +133,7 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Grant access</h6>
-                                <select class="btn-danger" id="role">
+                                <select class="btn btn-primary" id="role">
                                     <option value="1">ADMIN</option>
                                     <option value="2">COACH</option>
                                     <option value="3">PLAYER</option>
@@ -148,21 +149,21 @@
                                 <div id="showAvatar">
 
                                 </div>
-                                <!--              <img id="blah1" src="#" alt="your image" height="100" width="120" />-->
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-12">
+
                                 <a type="button" class="btn btn-warning " onclick="upDateAvatar()" href="#">Update</a>
+                                <a type="button" class="btn btn-danger" onclick="xoaUser()" href="#">Delete this
+                                    user</a>
+
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row-8" id="show">
-                    <!-- Button to Open the Modal -->
-                </div>
 
             </div>
         </div>
@@ -171,14 +172,14 @@
 </div>
 
 
-
-
 <div id="login-logout" hidden></div>
 <h4 id="helloUser" hidden></h4>
+<h4 id="show" hidden></h4>
 
-<script src="../js/register.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/login-logout.js"></script>
+<script src="../js/hienThiAccount.js"></script>
+<script src="../js/register.js"></script>
 </body>
 </html>

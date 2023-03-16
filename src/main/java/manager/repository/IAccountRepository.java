@@ -10,4 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface IAccountRepository extends JpaRepository<Account, Long> {
     Account findAccountByUsername(String username);
     Account findAccountById(Long id);
+
+    @Override
+    void deleteById(Long id);
 }

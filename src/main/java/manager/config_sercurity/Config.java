@@ -36,7 +36,7 @@ public class Config extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers( "/**").permitAll()
 //                .antMatchers("/blogs").hasAnyRole("USER","ADMIN")
-//                .antMatchers("/blogs/**").hasRole("ADMIN")
+                .antMatchers("/users/listUser").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and().csrf().disable();
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

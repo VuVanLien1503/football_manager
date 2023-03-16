@@ -53,6 +53,10 @@ public class AccountController {
     @PostMapping("/upAvatar")
     public String upAvatar(@RequestParam(required = false) MultipartFile fileImg) {
 
+        if(fileImg == null){
+            return "../images/users/avatar.png";
+
+        }
         String nameImg = fileImg.getOriginalFilename();
 
         try {
@@ -82,5 +86,10 @@ public class AccountController {
     @PutMapping("/update/{id}")
     public void update(@RequestBody Account account) {
         accountService.save(account);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        accountService.deleteById(id);
     }
 }
