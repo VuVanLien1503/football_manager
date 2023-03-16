@@ -26,6 +26,11 @@ public class PlayerService implements IPlayerService{
     }
 
     @Override
+    public Page<Player> secondaryTeam(Pageable pageable) {
+        return iPlayerRepository.secondaryTeam(pageable);
+    }
+
+    @Override
     public Optional<Player> findById(Long id) {
         return iPlayerRepository.findById(id);
     }

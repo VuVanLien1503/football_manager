@@ -16,6 +16,23 @@
             }
         })
     }
+    function displaySecondaryPlayer(){
+        $.ajax({
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+            },
+            type: "GET",
+            url: "http://localhost:8081/api/player-secondary-teams",
+            success : function (data){
+                let content = ``;
+                for (let i = 0; i < data.content.length; i++){
+                    content += `<div class="position">
+                        <a onclick="onePlayer(${data.content[i].id})" title=""><span class="${data.content[i].position.name}">${data.content[i].position.name}</span> ${data.content[i].shirtNumber}. ${data.content[i].name}</a></div>`
+                }
+                document.getElementById("secondary-nav").innerHTML = content;
+            }
+        })
+    }
     function resultBmi(bmi) {
     let result = "";
     if (bmi<18.5){
@@ -37,7 +54,7 @@
             // url:"http://localhost:8081/api/salaries?id1="+id +"&id2="+1,
             success : function (data){
                 $.ajax({
-                    url:"http://localhost:8081/api/salaries?id1="+id+"&id2="+2,
+                    url:"http://localhost:8081/api/salaries?id1="+id+"&id2="+1,
                     success:function (data1){
 
                         let bmi = `${data.weight/(data.height*data.height)}`
@@ -63,6 +80,7 @@
                     </div>
                   </div>`;
                         document.getElementById("show-one").innerHTML=content;
+                        document.getElementById("show-tow").innerHTML=content;
                     }
                 })
 
