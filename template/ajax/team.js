@@ -77,6 +77,7 @@ function onePlayer(id) {
 <!--                    Thông tin cầu thủ-->
                     <div class="teams-description">
                       <p><span class="title">NATIONAL : </span>${data.address}</p>
+                      <p><span class="title">PERFORMSNCE : </span>${data.performance.name}</p>
                       <p><span class="title">DATE OF BIRTH : </span>${data.date}</p>
                       <p><span class="title">HEIGHT : </span>${data.height} M</p>
                       <p><span class="title">WEIGHT : </span>${data.weight} Kg</p>
@@ -87,8 +88,11 @@ function onePlayer(id) {
                       <p><span class="title">SALARYBORNUS : </span>${data1.workingHours}</p>
                       <p><span class="title">SALARYBORNUS : </span>${data1.workingHours * data1.capacitySalary}</p>
                       <div>
-                      <p><button onclick="updateFormPlayer(${data.id})" class="btn btn-primary">Update</button></p>
-                      <p><button onclick="deletePlayer(${data.id})" class="btn btn-warning">Delete</button></p>
+                      <p style="margin-top: 50px">
+                      <button onclick="updateFormPlayer(${data.id})" class="btn btn-primary">Update</button>
+                      <button onclick="deletePlayer(${data.id})" class="btn btn-warning" style="margin-left: 50px">Delete</button>
+                      </p>
+                      
 </div>
                     </div>
                   </div>`;
