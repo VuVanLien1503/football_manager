@@ -23,7 +23,7 @@ public class CoachService implements ICoachService {
 
     @Override
     public List<Coach> findAll() {
-        return coachRepository.findAll();
+        return coachRepository.displayListAllCoach();
     }
 
     @Override

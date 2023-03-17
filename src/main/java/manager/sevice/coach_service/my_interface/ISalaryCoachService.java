@@ -15,4 +15,6 @@ public interface ISalaryCoachService extends ICrudService<SalaryCoach> {
 
     void updateSumBonusSalary(Long idCoach);
 
+    void updateSalaryCoach(SalaryCoach salaryCoach,Long idCoach, Long idWeak);
+    void deleteSalaryCoachDoubleId(Long idCoach, Long idWeak);
 }

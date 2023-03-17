@@ -314,7 +314,7 @@
     // Hiển thị danh sách lương của tất cả HLV
     function displayAllSalaryCoach(page){
         $.ajax({
-            url : "http://localhost:8081/admin/salaries?page=" + page + "&size=15",
+            url : "http://localhost:8081/admin/salaries?page=" + page + "&size=7",
             type : "GET",
             success(data){
                 tableSalaryCoach(data.content)
@@ -351,8 +351,8 @@
                                 <td>${data[i].weekCoach.name}</td>
                                 <td>${data[i].hardSalary}</td>
                                 <td>${data[i].bonusSalary}</td>
-                                <td><button  class="btn btn-warning" onclick="updateFormSalaryCoach(${data[i].id})">Update</button></td>
-                                <td><button  class="btn btn-danger" onclick="deleteFormSalaryCoach(${data[i].id})">Delete</button></td>
+                                <td><button  class="btn btn-warning" onclick="updateFormSalaryCoach(${data[i].coach.id},${data[i].weekCoach.id})">Update</button></td>
+                                <td><button  class="btn btn-danger" onclick="deleteFormSalaryCoach(${data[i].coach.id},${data[i].weekCoach.id})">Delete</button></td>
                                 </tr>`
         }
         context += `</tbody> </table> </div>`
@@ -376,6 +376,147 @@
         displayAllSalaryCoach(pageNumber+1)
     }
 
+    // Tạo lương HLV
+    function createFormSalaryCoach(){
+        $('#myModalCreateSalary').modal('show');
+        getCoach()
+        getWeeks()
+        document.getElementById("coachFormSalary").reset()
 
+    }
+
+    function getCoach(){
+        $.ajax({
+            // headers: {
+            //     Authorization: "Bearer " + sessionStorage.getItem("token"),
+            // },
+            url : "http://localhost:8081/admin/list/coaches",
+            type: "GET",
+            success(data){
+                let context = `<label for="coaches" class="form-label">Coach</label><br>
+                                        <select id="coaches" class="form-control"  style="width: 25%">`
+                for (let i =0; i <data.length; i++){
+                    context+=`<option value="${data[i].id}">${data[i].name}</option>`
+                }
+                context += `</select>`
+                document.getElementById("idCoach").innerHTML = context
+                document.getElementById("idCoach1").innerHTML = context
+            },
+        })
+    }
+    function getWeeks(){
+        $.ajax({
+            // headers: {
+            //     Authorization: "Bearer " + sessionStorage.getItem("token"),
+            // },
+            url : "http://localhost:8081/admin/weeks",
+            type: "GET",
+            success(data){
+                let context = `<label for="weeks" class="form-label">Week</label><br>
+                                        <select id="weeks" class="form-control"  style="width: 25%">`
+                for (let i =0; i <data.length; i++){
+                    context+=`<option value="${data[i].id}">${data[i].name}</option>`
+                }
+                context += `</select>`
+                document.getElementById("idWeek").innerHTML = context
+                document.getElementById("idWeek1").innerHTML = context
+            },
+        })
+    }
+    function createSalaryCoach(){
+     let salary = {
+            id : {},
+            coach : {
+                id : $("#coaches").val(),
+            },
+            weekCoach : {
+                id : $("#weeks").val(),
+            },
+            hardSalary : $("#hardSalary").val(),
+            bonusSalary : $("#bonusSalary").val(),
+        }
+        console.log(salary)
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            url: "http://localhost:8081/admin/salaries/save",
+            type: "POST",
+            data: JSON.stringify(salary),
+            success() {
+                alert("Success!")
+                document.getElementById("coachFormSalary").reset()
+                displayAllSalaryCoach(0)
+            }
+        })
+        event.preventDefault()
+    }
+
+    function updateFormSalaryCoach(idCoach, idWeek){
+        $('#myModalUpdateSalary').modal('show')
+        $.ajax({
+            // headers: {
+            //     Authorization: "Bearer " + sessionStorage.getItem("token"),
+            // },
+            url : `http://localhost:8081/admin/salaries/${idCoach}/${idWeek}`,
+            type: "GET",
+            success(data) {
+                getCoach()
+                getWeeks()
+                $("#updateHardSalary").val(data.hardSalary)
+                $("#updateBonusSalary").val(data.bonusSalary)
+            }
+        })
+    }
+  // đang lỗi
+    function updateSalaryCoach(){
+        let salary = {
+            id : {},
+            coach : {
+                id : $("#coaches").val(),
+            },
+            weekCoach : {
+                id : $("#weeks").val(),
+            },
+            hardSalary : $("#updateHardSalary").val(),
+            bonusSalary : $("#updateBonusSalary").val(),
+        }
+        console.log(salary)
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            url: `http://localhost:8081/admin/salaries/update/${salary.coach.id}/${salary.weekCoach.id}`,
+            type: "POST",
+            data: JSON.stringify(salary),
+            success(data) {
+                console.log(data)
+                alert("Success!")
+                document.getElementById("coachFormSalary").reset()
+                displayAllSalaryCoach(0)
+            }
+        })
+        event.preventDefault()
+    }
+
+    function deleteFormSalaryCoach(idCoach, idWeek){
+        if (confirm("Do you want to delete ?")) {
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    // Authorization: "Bearer " + sessionStorage.getItem("token"),
+                },
+                url: `http://localhost:8081/admin/salaries/delete/${idCoach}/${idWeek}`,
+                type: "DELETE",
+                success() {
+                    alert("Delete successfully!")
+                    displayAllSalaryCoach(0)
+                }
+            })
+        }
+    }
 
 

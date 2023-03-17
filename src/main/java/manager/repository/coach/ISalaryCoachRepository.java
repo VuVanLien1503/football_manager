@@ -42,6 +42,14 @@ public interface ISalaryCoachRepository extends JpaRepository<SalaryCoach,Long> 
     @Modifying
     @Query(value = "UPDATE Coach as c set c.sumBonusSalary = :sumBonusSalary  where c.id = :idCoach")
     void updateSumBonusSalary(@Param("idCoach") Long idCoach,@Param("sumBonusSalary")Long sumBonusSalary );
-
-
+//    Update: lương
+    @Modifying
+    @Query(value = "update SalaryCoach as s set s.hardSalary = :hardSalary, s.bonusSalary = :bonusSalary " +
+            "where s.coach.id = :idCoach and s.weekCoach.id = :idWeek")
+    void updateSalaryCoach(@Param("hardSalary") Long hardSalary, @Param("bonusSalary") Long bonusSalary,
+                                  @Param("idCoach") Long idCoach,@Param("idWeek") Long idWeek);
+//    Xóa lương
+    @Modifying
+    @Query(value = "update  SalaryCoach  as s set s.status = false where s.coach.id = :idCoach and  s.weekCoach.id = :idWeek")
+    void deleteSalaryCoachDoubleId(@Param("idCoach") Long idCoach, @Param("idWeek") Long idWeek);
 }

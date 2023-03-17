@@ -1,8 +1,11 @@
 package manager.controller.coach;
 
 import manager.model.coach.Coach;
+import manager.model.coach.WeekCoach;
 import manager.model.coach.WorkPosition;
 import manager.sevice.coach_service.my_interface.ICoachService;
+
+import manager.sevice.coach_service.my_interface.IWeekCoachService;
 import manager.sevice.coach_service.my_interface.IWorkPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -26,6 +29,9 @@ public class AdminCoachController {
     @Autowired
     private IWorkPositionService workPositionService;
 
+    @Autowired
+    private IWeekCoachService weekCoachService;
+
     //Truy xuất danh sách huấn luyện viên
     @GetMapping("/coaches")
     public ResponseEntity<Page<Coach>> displayAllCoach(@PageableDefault(size = 3) Pageable pageable){
@@ -36,6 +42,26 @@ public class AdminCoachController {
         return new ResponseEntity<>(coaches,HttpStatus.OK);
 
     }
+    @GetMapping("/weeks")
+    public ResponseEntity<List<WeekCoach>> displayWeekCoach(){
+        List<WeekCoach> weekCoaches = weekCoachService.findAll();
+        if (weekCoaches.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(weekCoaches,HttpStatus.OK);
+    }
+
+    //Hiển thi danh sách tuần
+    @GetMapping("/list/coaches")
+    public ResponseEntity<List<Coach>> displayAllCoach(){
+        List<Coach> coaches = coachService.findAll();
+        if (coaches.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(coaches,HttpStatus.OK);
+    }
+
+
     @GetMapping("/coaches/typical")
     public ResponseEntity<List<Coach>> displayTypicalCoach(){
         List<Coach> coaches = coachService.displayTypicalCoach();
