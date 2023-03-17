@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/salaries")
+@RequestMapping("/admin/salaries")
 @PropertySource("classpath:application.properties")
 public class SalaryCoachController {
     @Autowired
     private ISalaryCoachService salaryCoachService;
     @GetMapping
-    public ResponseEntity<Page<SalaryCoach>> displayAllSalary(@PageableDefault(size = 3) Pageable pageable){
+    public ResponseEntity<Page<SalaryCoach>> displayAllSalary(@PageableDefault(size = 15) Pageable pageable){
         Page<SalaryCoach> salaryCoaches = salaryCoachService.displayAll(pageable);
         if (salaryCoaches.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -36,25 +36,11 @@ public class SalaryCoachController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
-    @PostMapping("/hard_salary_coach/{idCoach}")
-    public ResponseEntity<Long> sumHardSalaryCoach(@PathVariable("idCoach")Long idCoach){
-        Long sum = salaryCoachService.sumHardSalaryCoach(idCoach);
-        if (sum == 0L){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        salaryCoachService.updateSumHardSalary(idCoach);
-        return new ResponseEntity<>(sum,HttpStatus.OK);
-    }
-
-    @PostMapping("/bonus_salary_coach/{idCoach}")
-    public ResponseEntity<Long> sumBonusSalaryCoach(@PathVariable("idCoach")Long idCoach){
-        Long sum = salaryCoachService.sumBonusSalaryCoach(idCoach);
-        if (sum == 0L){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        salaryCoachService.updateSumBonusSalary(idCoach);
-        return new ResponseEntity<>(sum,HttpStatus.OK);
+    @PostMapping("/save")
+    public ResponseEntity<SalaryCoach> saveSalaryCoach(@RequestBody SalaryCoach salaryCoach){
+        salaryCoachService.updateSumHardSalary(salaryCoach.getCoach().getId());
+        salaryCoachService.sumBonusSalaryCoach(salaryCoach.getCoach().getId());
+        return new ResponseEntity<>(salaryCoachService.save(salaryCoach),HttpStatus.OK);
     }
 
 

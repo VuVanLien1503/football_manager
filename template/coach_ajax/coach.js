@@ -101,8 +101,7 @@
 
     //Hiển thị bảng HVL
     function  displayTableCoach(data){
-        let context = `<div class="container">
-                <h2 style="text-align: center">List Coach</h2>
+        let context = `<div class="container">            
                 <table class="table table-striped-columns">
                     <thead>
                     <tr>

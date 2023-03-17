@@ -50,14 +50,15 @@
                     document.getElementById("next").hidden = true
                 }
                 $("#tableCoach").show()
+                $("#tableSalaryCoach").hide()
+
             }
         })
     }
 
     //Hiển thị bảng HVL
     function  displayTableCoach(data){
-        let context = `<div class="container">
-                    <h2 style="text-align: center">List Coach</h2>
+        let context = `<div class="container">                   
                     <table class="table table-striped-columns">
                         <thead>
                         <tr>
@@ -287,13 +288,12 @@
             url: `http://localhost:8081/admin/coaches/${id}`,
             type : "GET",
             success(data){
-                let context=`<div class="card" style="width: 100%">
-                                <div style="width:  50%">
+                let context=`<div class="card" >
+                                <div class="row">
+                                <div class="col-md-6">
                                 <img class="card-img-top" src="${data.imagePath}" style="width: 200px"; height="200px"alt="Card image cap">                        
                                 </div>
-                              
-                                <div class="card-body" >
-                                 <div style="width: 50%">
+                               <div class="col-md-6">
                                     <h4 class="card-title" style="color: red"><i>NAME  : </i>${data.name}</h4>
                                     <p>BirDay   :  ${data.date}</p>
                                     <p>Position :  ${data.position.name}</p>
@@ -301,12 +301,79 @@
                                     <p>Bonus    :  ${data.sumBonusSalary}</p>
                                 </div>
                                 </div>
+                                <div class="card-body" >
+                               
+                                </div>
                               </div>`
                 document.getElementById("detailCoach").innerHTML = context
                 $("#detailCoach").show()
             }
-
         })
+    }
+
+    // Hiển thị danh sách lương của tất cả HLV
+    function displayAllSalaryCoach(page){
+        $.ajax({
+            url : "http://localhost:8081/admin/salaries?page=" + page + "&size=15",
+            type : "GET",
+            success(data){
+                tableSalaryCoach(data.content)
+                displaySalaryCoachPage(data)
+                if (data.pageable.pageNumber === 0) {
+                    document.getElementById("backup").hidden = true
+                }
+                //điều kiện bỏ nút next
+                if (data.pageable.pageNumber + 1 === data.totalPages) {
+                    document.getElementById("next").hidden = true
+                }
+                $("#tableSalaryCoach").show()
+                $("#tableCoach").hide()
+            }
+        })
+
+    }
+    function tableSalaryCoach(data){
+        let context = `<div class="container">                 
+                    <table class="table table-striped-columns">
+                        <thead>
+                        <tr>                          
+                            <th>Coach</th>
+                            <th>Week</th>
+                            <th>Hard Salary</th>
+                            <th>Bonus Salary</th>              
+                            <th colspan="2" style="text-align: center">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>`
+        for (let i = 0; i < data.length; i++) {
+            context += `<tr>
+                                <td>${data[i].coach.name}</td>
+                                <td>${data[i].weekCoach.name}</td>
+                                <td>${data[i].hardSalary}</td>
+                                <td>${data[i].bonusSalary}</td>
+                                <td><button  class="btn btn-warning" onclick="updateFormSalaryCoach(${data[i].id})">Update</button></td>
+                                <td><button  class="btn btn-danger" onclick="deleteFormSalaryCoach(${data[i].id})">Delete</button></td>
+                                </tr>`
+        }
+        context += `</tbody> </table> </div>`
+        document.getElementById("showSalaryCoach").innerHTML = context;
+    }
+    function displaySalaryCoachPage(data){
+
+        let content = `<button class="btn btn-primary" id="backup" onclick="isPreviousSalaryCoach(${data.pageable.pageNumber})">Previous</button>
+        <span>${data.pageable.pageNumber+1} | ${data.totalPages}</span>
+        <button class="btn btn-primary" id="next" onclick="isNextSalaryCoach(${data.pageable.pageNumber})">Next</button>
+        <button class="btn btn-success" onclick="createFormSalaryCoach()" id="creatFormCoach" style="margin-left: 800px">Create Salary Coach</button>`
+        document.getElementById('pageSalaryCoach').innerHTML = content;
+    }
+    //hàm lùi page
+    function isPreviousSalaryCoach(pageNumber) {
+        displayAllSalaryCoach(pageNumber-1)
+    }
+
+    //hàm tiến page
+    function isNextSalaryCoach(pageNumber) {
+        displayAllSalaryCoach(pageNumber+1)
     }
 
 
