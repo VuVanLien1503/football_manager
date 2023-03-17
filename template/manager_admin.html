@@ -241,7 +241,8 @@
         <div id="showSalaryCoach"></div>
         <div id="pageSalaryCoach"></div>
     </div>
-    <div class="modal fade" id="myModalCreatSalary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!--    Tạo mới lương-->
+    <div class="modal fade" id="myModalCreateSalary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -253,6 +254,8 @@
                         <div class="container"  >
                             <form id="coachFormSalary" enctype="multipart/form-data" >
                                 <h2 style="font-weight: bold ">Create Form</h2>
+                                <div id="idCoach"></div>
+                                <div id="idWeek"></div>
                                 <div class="mb-3">
                                     <label for="hardSalary" class="form-label">Hard Salary</label>
                                     <input type="text" class="form-control" id="hardSalary" style="width: 25%">
@@ -266,12 +269,44 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" id="actionSalaryCoach" style="margin-right: 250px" onclick="creatCoach()" data-dismiss="modal" >Create</button>&nbsp;
+                    <button class="btn btn-primary" id="actionSalaryCoach" style="margin-right: 250px" onclick="createSalaryCoach()" data-dismiss="modal" >Create</button>&nbsp;
                 </div>
             </div>
         </div>
     </div>
-
+<!--Update lương-->
+    <div class="modal fade" id="myModalUpdateSalary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabelUpdateSalary" style="color: red"> UPDATE-COACH</h4>
+                </div>
+                <div class="modal-body" >
+                    <div style="margin-left: 100px">
+                        <div class="container"  >
+                            <form id="coachUpdateFormSalary" enctype="multipart/form-data" >
+                                <h2 style="font-weight: bold ">Update Form</h2>
+                                <div id="idCoach1"></div>
+                                <div id="idWeek1"></div>
+                                <div class="mb-3">
+                                    <label for="hardSalary" class="form-label">Hard Salary</label>
+                                    <input type="text" class="form-control" id="updateHardSalary" style="width: 25%">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="bonusSalary" class="form-label">Bonus Salary</label>
+                                    <input type="text" class="form-control" id="updateBonusSalary" style="width: 25%">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="actionUpdateSalaryCoach" style="margin-right: 250px" onclick="updateSalaryCoach()" data-dismiss="modal" >Update</button>&nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <!-- CLIENT SECTION -->

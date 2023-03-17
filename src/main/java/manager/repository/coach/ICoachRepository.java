@@ -18,6 +18,9 @@ public interface ICoachRepository extends JpaRepository<Coach, Long> {
     @Query(value = "select c from  Coach as c where c.status = true")
     Page<Coach> displayAllCoach(Pageable pageable);
 
+    @Query(value = "select c from  Coach as c where c.status = true")
+    List<Coach> displayListAllCoach();
+
     @Query(value = "select c from  Coach as c where c.status = true and c.typicalCoach = true")
     List<Coach> displayTypicalCoach();
     @Modifying

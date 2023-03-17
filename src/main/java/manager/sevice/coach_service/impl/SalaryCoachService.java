@@ -69,4 +69,14 @@ public class SalaryCoachService implements ISalaryCoachService {
     public void updateSumBonusSalary(Long idCoach) {
         salaryCoachRepository.updateSumBonusSalary(idCoach,sumBonusSalaryCoach(idCoach));
     }
+
+    @Override
+    public void updateSalaryCoach(SalaryCoach salaryCoach, Long idCoach, Long idWeak) {
+         salaryCoachRepository.updateSalaryCoach(salaryCoach.getHardSalary(),salaryCoach.getBonusSalary(),idCoach,idWeak);
+    }
+
+    @Override
+    public void deleteSalaryCoachDoubleId(Long idCoach, Long idWeak) {
+        salaryCoachRepository.deleteSalaryCoachDoubleId(idCoach,idWeak);
+    }
 }
