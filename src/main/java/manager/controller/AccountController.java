@@ -2,6 +2,7 @@ package manager.controller;
 
 import manager.model.account.Account;
 import manager.model.account.AccountToken;
+import manager.model.account.Role;
 import manager.sevice.account_service.AccountService;
 import manager.sevice.account_service.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @PropertySource("classpath:application.properties")
@@ -53,6 +55,27 @@ public class AccountController {
     @PostMapping("/upAvatar")
     public String upAvatar(@RequestParam(required = false) MultipartFile fileImg) {
 
+        if (fileImg == null) {
+            return "../images/users/avatar.png";
+        }
+        String nameImg = fileImg.getOriginalFilename();
+
+        try {
+            FileCopyUtils.copy(fileImg.getBytes(), new File(upload + nameImg));
+            return "../images/users/" + nameImg;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @PostMapping("/upDateAvatar/{id}")
+    public String upDateAvatar(@RequestParam(required = false) MultipartFile fileImg, @PathVariable Long id) {
+
+        if (fileImg == null) {
+            String img = accountService.findAccountById(id).getAvatar();
+            return img;
+        }
         String nameImg = fileImg.getOriginalFilename();
 
         try {
@@ -66,6 +89,11 @@ public class AccountController {
 
     @PostMapping("/register")
     public void register(@RequestBody Account account) {
+        Role role = new Role();
+        role.setId(4L);
+        List<Role> roles = new ArrayList<>();
+        roles.add(role);
+        account.setRoles(roles);
         accountService.save(account);
     }
 
@@ -80,7 +108,13 @@ public class AccountController {
     }
 
     @PutMapping("/update/{id}")
-    public void update(@RequestBody Account account) {
+    public void update(@RequestBody Account account, @PathVariable Long id) {
+
         accountService.save(account);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        accountService.deleteById(id);
     }
 }

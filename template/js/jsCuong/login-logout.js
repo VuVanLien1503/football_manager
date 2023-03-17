@@ -29,7 +29,7 @@ function loginUser() {
         },
         error: function (err) {
             console.log(err)
-            alert("có lỗi")
+            alert("Mật khẩu hoặc tài khoản không đúng! ")
         }
 
     })
@@ -57,6 +57,13 @@ function onLoad() {
         document.getElementById("login-logout").innerHTML = "<a href='login-logout/login.html' >login</a>"
     }
 
+    if(localStorage.getItem("user").match("ADMIN")){
+        document.getElementById("rollAdmin").innerHTML = "<a href=\"manager_admin.html\" title=\"\">MANAGERMENT</a>"
+    }
+
+    if (localStorage.getItem("user").match("COACH") ){
+        document.getElementById("rollCoach").innerHTML = "<a href=\"coach.html\">COACH</a>"
+    }
 }
 
 onLoad()
@@ -82,17 +89,25 @@ function accountDetail() {
             $("#password").val(user.password);
             $("#address").val(user.address);
             $("#phoneNumber").val(user.phoneNumber);
+            $("#role").val(user.roles[0].id);
 
             let img = `
                       <img id="blah1" src="${user.avatar}" width="120" class="rounded-circle" />
                       `
 
+            let showButton = `
+                 <a type="button" class="btn btn-warning " onclick="upDateAvatar(${user.id})" href="#">Update</a>
+                        `
+
             // document.getElementById("showAvatar").innerHTML = img;
             document.getElementById("profileImg").innerHTML = img;
             document.getElementById("fullName1").innerHTML = user.fullName;
             document.getElementById("address1").innerHTML = user.address;
-            document.getElementById("roleUser").innerHTML = localStorage.getItem("role")
-            console.log(localStorage.getItem("role"))
+            document.getElementById("showButton").innerHTML = showButton;
+            let role = user.roles[0].name
+            role = role.slice(5)
+            document.getElementById("roleUser").innerHTML = role
+
         },
         error: function (err) {
             console.log(err)
