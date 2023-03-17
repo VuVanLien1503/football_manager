@@ -14,12 +14,12 @@ function show() {
                         <h1 STYLE="color: #d58512">USER LIST</h1>
                         <thead>
                         <tr>
-                            <th>id</th>
-                            <th>Full Name</th>
+                            <th>&nbsp&nbsp&nbsp&nbsp id</th>
+                            <th>&nbsp&nbsp&nbsp&nbsp Full Name</th>
                             <th>Username</th>
-                            <th> Authority Role</th>
-                            <th>Action</th>
-                            <th>Action</th>
+                            <th>&nbsp&nbsp&nbsp&nbsp&nbsp Authority Role</th>
+                            <th>&nbsp&nbsp&nbsp&nbsp Action</th>
+                            <th>&nbsp&nbsp Action</th>
                         </tr>
                         </thead>
                         <tbody>`;
@@ -56,7 +56,7 @@ function show() {
 }
 
 
-if (localStorage.getItem("username") === "admin") {
+if (localStorage.getItem("user").match("ADMIN")) {
     show();
 }
 

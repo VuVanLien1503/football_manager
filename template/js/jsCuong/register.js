@@ -43,7 +43,7 @@ function createAccount(avatar) {
         document.getElementById("thongBao").innerHTML = "MK không trùng khớp"
         return
     }
-    if (username.toUpperCase() === "ADMIN") {
+    if (username.toUpperCase().match("ADMIN")) {
         document.getElementById("thongBao").innerHTML = "Bạn không thể đăng ký bằng tài khoản này"
         return;
     }
@@ -89,7 +89,7 @@ function showAvatar1() {
 }
 
 
-function upDateAvatar() {
+function upDateAvatar(id) {
     // alert("vao`")
     let fileImg = document.getElementById("avatar1").files;
     var formData = new FormData();
@@ -97,14 +97,14 @@ function upDateAvatar() {
 
 
     $.ajax({
+        type: "POST",
         contentType: false,
         processData: false,
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem("token")
         },
-        type: "POST",
         data: formData,
-        url: "http://localhost:8081/users/upAvatar",
+        url: "http://localhost:8081/users/upDateAvatar/" + id,
         success: function (avatar) {
             updateAccount(avatar)
         }, error: function (err) {
@@ -116,7 +116,7 @@ function upDateAvatar() {
 }
 
 function updateAccount(avatar) {
-    // alert("jo")
+    // alert("vao`")
     let id = document.getElementById("id").value;
     let fullName = document.getElementById("fullName").value;
     let username = document.getElementById("username").value;
@@ -124,6 +124,10 @@ function updateAccount(avatar) {
     let phoneNumber = document.getElementById("phoneNumber").value;
     let address = document.getElementById("address").value;
 
+    if(avatar === undefined){
+        avatar = document.getElementById("avatar1").value;
+    }
+    console.log(avatar)
 
     if (password.length < 5) {
         alert("Mk quá ngắn,dưới 5 ký tự, ko khả thi")
@@ -164,6 +168,8 @@ function updateAccount(avatar) {
             "avatar": avatar
         }
     }
+
+
 
 
     console.log(account)

@@ -69,6 +69,24 @@ public class AccountController {
         return null;
     }
 
+    @PostMapping("/upDateAvatar/{id}")
+    public String upDateAvatar(@RequestParam(required = false) MultipartFile fileImg, @PathVariable Long id) {
+
+        if (fileImg == null) {
+            String img = accountService.findAccountById(id).getAvatar();
+            return img;
+        }
+        String nameImg = fileImg.getOriginalFilename();
+
+        try {
+            FileCopyUtils.copy(fileImg.getBytes(), new File(upload + nameImg));
+            return "../images/users/" + nameImg;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @PostMapping("/register")
     public void register(@RequestBody Account account) {
         Role role = new Role();
@@ -90,7 +108,8 @@ public class AccountController {
     }
 
     @PutMapping("/update/{id}")
-    public void update(@RequestBody Account account) {
+    public void update(@RequestBody Account account, @PathVariable Long id) {
+
         accountService.save(account);
     }
 
