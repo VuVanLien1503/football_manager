@@ -1,39 +1,9 @@
 
     function homeCoach(){
-        displayTypicalCoach()
-        $("#creatFormCoach").hide()
-        $("#coachForm").hide()
-        $("#updateFormCoach").hide()
+        displayTypicalCoachAdmin()
     }
     window.onload = homeCoach()
-    //Hiển thị HLV tiêu biểu bên Coach
-    function displayTypicalCoach(){
-        $.ajax({
-            url : "http://localhost:8081/coaches/typical",
-            type: "GET",
-            success(data){
-                let context = ""
-                for (let i = 0; i < data.length; i++) {
-                    context += `<div class="col-sm-12 col-md-4">
-                                        <div class="coach-item">
-                                          <div class="gambar">
-                                            <img src="${data[i].imagePath}" style="width: 500px; height: 500px" alt="Coach" class="img-responsive">
-                                          </div>
-                                          <div class="item-body">
-                                            <div class="name">
-                                              ${data[i].name}
-                                            </div>
-                                            <div class="position">
-                                              ${data[i].position.name}
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>`
-                }
-                document.getElementById("typicalCoach").innerHTML = context;
-            }
-        })
-    }
+
     //Hiển thị HLV tiêu biểu bên admin
     function displayTypicalCoachAdmin(){
         $.ajax({
@@ -45,7 +15,7 @@
                     context += `<div class="col-sm-12 col-md-4">
                                         <div class="coach-item">
                                           <div class="gambar">
-                                            <img src="${data[i].imagePath}" style="width: 500px; height: 500px" alt="Coach" class="img-responsive">
+                                            <img src="${data[i].imagePath}" onclick="detailCoach(${data[i].id})" style="width: 500px; height: 500px" alt="Coach" class="img-responsive">
                                           </div>
                                           <div class="item-body">
                                             <div class="name">
@@ -80,10 +50,6 @@
                     document.getElementById("next").hidden = true
                 }
                 $("#tableCoach").show()
-                $("#coachForm").hide()
-                $("#creatFormCoach").show()
-                $("#updateFormCoach").hide()
-
             }
         })
     }
@@ -110,7 +76,7 @@
         for (let i = 0; i < data.length; i++) {
             context += `<tr>
                                 <td>${i+1}</td>
-                                <td><img src="${data[i].imagePath}"  alt="Coach" style="width: 50px"; height="50px"></td>
+                                <td><img src="${data[i].imagePath}" onclick="detailCoach(${data[i].id})" alt="Coach" style="width: 50px"; height="50px"></td>
                                 <td>${data[i].name}</td>
                                 <td>${data[i].date}</td>
                                 <td>${data[i].address}</td>
@@ -125,9 +91,11 @@
         document.getElementById("showCoach").innerHTML = context;
     }
     function displayCoachPage(data){
+
         let content = `<button class="btn btn-primary" id="backup" onclick="isPreviousCoach(${data.pageable.pageNumber})">Previous</button>
         <span>${data.pageable.pageNumber+1} | ${data.totalPages}</span>
-        <button class="btn btn-primary" id="next" onclick="isNextCoach(${data.pageable.pageNumber})">Next</button>`
+        <button class="btn btn-primary" id="next" onclick="isNextCoach(${data.pageable.pageNumber})">Next</button>
+        <button class="btn btn-success" onclick="createFormCoach()" id="creatFormCoach" style="margin-left: 800px">Create Coach</button>`
         document.getElementById('pageCoach').innerHTML = content;
     }
     //hàm lùi page
@@ -142,11 +110,11 @@
 
     //Truy cập form tạo mới HVL
     function createFormCoach(){
+    // goi modal creat
+        $('#myModalCrate').modal('show');
         document.getElementById("coachForm").reset()
         getSelectTypical()
         getWorkPosition()
-        $("#coachForm").show()
-        $("#tableCoach").hide()
     }
 
     // Truy xuat danh sách vị tr HLV
@@ -232,13 +200,12 @@
     //Back danh sách HVL
     function backToDisplayCoach(){
         $("#tableCoach").show()
-        $("#coachForm").hide()
-        $("#creatFormCoach").show()
-        $("#updateFormCoach").hide()
+        $('#myModalUpdate').addClass('hidden');
 
     }
 
     function updateFormCoach(id){
+        $('#myModalUpdate').modal('show')
         $.ajax({
             // headers: {
             //     Authorization: "Bearer " + sessionStorage.getItem("token"),
@@ -252,9 +219,8 @@
                 $("#addressUpdateCoach").val(data.address)
                 getWorkPosition()
                 getUpdateSelectTypical()
-                $("#coachForm").hide()
-                $("#tableCoach").hide()
                 $("#updateFormCoach").show()
+                $("#detailCoach").hide()
             }
         })
     }
@@ -289,6 +255,7 @@
                 alert("Success!")
                 document.getElementById("coachForm").reset()
                 displayAllCoach(0)
+
             }
         })
         event.preventDefault()
@@ -314,7 +281,33 @@
         }
     }
 
+    function detailCoach(id){
+        $('#myModal').modal('show');
+        $.ajax({
+            url: `http://localhost:8081/admin/coaches/${id}`,
+            type : "GET",
+            success(data){
+                let context=`<div class="card" style="width: 100%">
+                                <div style="width:  50%">
+                                <img class="card-img-top" src="${data.imagePath}" style="width: 200px"; height="200px"alt="Card image cap">                        
+                                </div>
+                              
+                                <div class="card-body" >
+                                 <div style="width: 50%">
+                                    <h4 class="card-title" style="color: red"><i>NAME  : </i>${data.name}</h4>
+                                    <p>BirDay   :  ${data.date}</p>
+                                    <p>Position :  ${data.position.name}</p>
+                                    <p>Salary   :  ${data.sumHardSalary}</p>
+                                    <p>Bonus    :  ${data.sumBonusSalary}</p>
+                                </div>
+                                </div>
+                              </div>`
+                document.getElementById("detailCoach").innerHTML = context
+                $("#detailCoach").show()
+            }
 
+        })
+    }
 
 
 
